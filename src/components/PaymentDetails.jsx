@@ -11,10 +11,9 @@ import CashOnDeliveryMessage from "./CashOnDeliveryMessage";
 import { useFormContext } from "react-hook-form";
 import ErrorMessage from "./ErrorMessage";
 
-const StyledContainer = styled(Container) `
+const StyledContainer = styled(Container)`
     grid-template-columns: 1fr 1fr;
-`
-
+`;
 
 const StyledLabel = styled(Label)`
     margin-bottom: -8px;
@@ -55,6 +54,7 @@ const useStyles = makeStyles({
         borderRadius: "10px",
         margin: 0,
         gridColumn: "1 / 3",
+        maxHeight: "56px",
         "&:first-of-type": {
             marginBottom: "-8px",
         },
@@ -113,7 +113,11 @@ export default function RadioButtonsGroup() {
                                         value === "e-money" ? true : false
                                     }
                                 />
-                                {errors.eNumber && <ErrorMessage>e-Money number required</ErrorMessage>}
+                                {errors.eNumber && (
+                                    <ErrorMessage>
+                                        e-Money number required
+                                    </ErrorMessage>
+                                )}
                             </InputContainer>
                             <InputContainer>
                                 <Label>e-Money PIN</Label>
@@ -125,7 +129,11 @@ export default function RadioButtonsGroup() {
                                         value === "e-money" ? true : false
                                     }
                                 />
-                                {errors.ePIN && <ErrorMessage>Please enter a valid PIN</ErrorMessage>}
+                                {errors.ePIN && (
+                                    <ErrorMessage>
+                                        Please enter a valid PIN
+                                    </ErrorMessage>
+                                )}
                             </InputContainer>
                         </EMoneyContainer>
                     )}
