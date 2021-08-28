@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 const Container = styled.div`
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 64px 1fr;
     grid-template-rows: 40px 20px;
     column-gap: 1rem;
     row-gap: 0.25rem;
     font-size: 0.875rem;
 `;
 const Img = styled.img`
-    width: 64px;
+    /* width: 64px; */
+    max-width: 100%;
     border-radius: 10px;
     grid-column: 1 / 2;
     grid-row: 1 / 3;
