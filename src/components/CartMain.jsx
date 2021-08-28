@@ -12,15 +12,9 @@ const Container = styled.div`
 `;
 
 export default function CartMain(props) {
-    const formattedName = props.name
-        .replace("Wireless", "")
-        .replace("Earphones", "")
-        .replace("Headphones", "")
-        .replace("Speakers", "");
-
     return (
         <Container>
-            <ProductsInCart src={props.src} name={formattedName} price={props.price} />
+            <ProductsInCart src={props.src} name={props.name} price={props.price} />
             <div>
                 <QuantityButton
                     quantity={props.quantity}

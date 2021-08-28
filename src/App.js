@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import { ThemeProvider as SCThemeProvider } from "styled-components";
 import { Modal } from "@material-ui/core";
+import {Dialog} from "@material-ui/core"
 
 // * Components
 import ScrollToTop from "./components/ScrollToTop.jsx";
@@ -59,7 +60,7 @@ function App() {
 
     // * Cart functions --------------------------------------
     const [cart, setCart] = useState([]);
-
+    console.log(cart)
     const updateCart = (product, operation, quantity = 1) => {
         // * Checks if product is in cart
         const target = cart.find((x) => x.product === product);
@@ -135,7 +136,7 @@ function App() {
                             openModal={openModal}
                             numberOfItems={cart.length}
                         />
-                        <Modal
+                        <Dialog
                             open={isModalOpen}
                             onClose={closeModal}
                             disableScrollLock
@@ -149,7 +150,7 @@ function App() {
                                 clearCart={clearCart}
                                 closeModal={closeModal}
                             />
-                        </Modal>
+                        </Dialog>
                         <ProductContext.Provider
                             value={[productDetail, handleProduct, handleCart]}
                         >
@@ -171,6 +172,7 @@ function App() {
                                         <Checkout
                                             cart={cart}
                                             totalPrice={totalPrice}
+                                            setCart={setCart}
                                         />
                                     )}
                                 />

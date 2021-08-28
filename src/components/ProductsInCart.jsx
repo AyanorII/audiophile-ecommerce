@@ -5,11 +5,11 @@ const Container = styled.div`
     grid-template-columns: auto 1fr;
     column-gap: 1rem;
     row-gap: 0.25rem;
+    font-size: ${props => props.fontSize === "small" ? "0.875rem" : "1rem"};
 `;
 const Img = styled.img`
     width: 100%;
     max-width: 64px;
-    height: 100%;
     object-fit: cover;
     border-radius: 10px;
     grid-column: 1 / 2;
@@ -28,11 +28,16 @@ const ProductPrice = styled.p`
 `;
 
 export default function ProductsInCart(props) {
-    
+    const formattedName = props.name
+    .replace("Wireless", "")
+    .replace("Earphones", "")
+    .replace("Headphones", "")
+    .replace("Speakers", "");
+
     return (
-        <Container>
+        <Container fontSize={props.fontSize}>
             <Img src={require(`../${props.src.slice(2)}`).default} />
-            <ProductName>{props.name}</ProductName>
+            <ProductName>{formattedName}</ProductName>
             <ProductPrice>$ {props.price}</ProductPrice>
         </Container>
     );

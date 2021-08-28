@@ -36,6 +36,7 @@ export default function Button(props) {
             data-aos={props.dataAos}
             className={props.className}
             onClick={props.onClick}
+            large={props.large}
         >
             {props.children ? props.children : "see product"}
         </StyledButton>

@@ -5,12 +5,6 @@ import TotalPrice from "../components/TotalPrice";
 import Button from "./Button";
 
 const StyledModalBody = styled.div`
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    width: 85%;
-    max-width: 377px;
-    transform: translate(50%, -50%);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 2rem;
@@ -18,22 +12,6 @@ const StyledModalBody = styled.div`
     border-radius: 10px;
     background: #fff;
     padding: 1.9375rem 1.75rem;
-
-    @media (min-width: 768px) {
-        transform: translateX(8%);
-        top: 130px;
-        right: 8%;
-    }
-
-    @media (min-width: 1200px) {
-        transform: translateX(16%);
-        right: 16%;
-    }
-
-    @media (min-width: 1440px) {
-        transform: translateX(21%);
-        right: 21%;
-    }
 `;
 
 const Cart = styled.h4`

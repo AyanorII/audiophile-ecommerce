@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import { useForm, Controller, FormProvider } from "react-hook-form";
-import Input from "../UI/Input";
+import { useForm, FormProvider } from "react-hook-form";
 import Page from "../components/Page";
 import BillingDetails from "../components/BillingDetails";
 import ShippingInfo from "../components/ShippingInfo";
 import PaymentDetails from "../components/PaymentDetails";
 import Summary from "../components/Summary";
+import { useState } from "react";
+import OrderComplete from "../components/OrderComplete";
+import { Dialog } from "@material-ui/core";
 
 const Form = styled.form`
     display: grid;
@@ -49,7 +51,15 @@ export default function Checkout(props) {
         control,
     } = form;
 
-    const onSubmit = () => console.log("purchased");
+    const [isOrderComplete, setIsOrderComplete] = useState(false);
+
+    const onSubmit = () => {
+        setIsOrderComplete(true);
+    };
+
+    const closeDialog = () => setIsOrderComplete(false);
+
+    const item = props.cart[0];
 
     return (
         <BG>
@@ -66,6 +76,23 @@ export default function Checkout(props) {
                         />
                     </Form>
                 </FormProvider>
+                <Dialog
+                    open={isOrderComplete}
+                    onClose={closeDialog}
+                    fullWidth
+                    maxWidth="sm"
+                >
+
+                    <OrderComplete
+                        name={item.product}
+                        src={item.img}
+                        price={item.price}
+                        quantity={item.quantity}
+                        numberOfItems={props.cart.length}
+                        totalPrice={props.totalPrice}
+                        setCart={props.setCart}
+                    />
+                </Dialog>
             </Page>
         </BG>
     );

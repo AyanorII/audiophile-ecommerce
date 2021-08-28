@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Button from "../UI/Button";
 import GrandTotal from "./GrandTotal";
-import Page from "./Page";
 import ProductsInCart from "./ProductsInCart";
 
 const SummarySection = styled.section`
