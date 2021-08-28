@@ -13,7 +13,7 @@ const Img = {
     gridColumn: "1 / 2",
     gridRow: "1 / 3",
     alignSelf: "start",
-    minHeight: "auto",
+    minHeight: "auto"
 };
 
 const ProductName = styled.p`
