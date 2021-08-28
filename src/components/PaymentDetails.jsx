@@ -11,6 +11,11 @@ import CashOnDeliveryMessage from "./CashOnDeliveryMessage";
 import { useFormContext } from "react-hook-form";
 import ErrorMessage from "./ErrorMessage";
 
+const StyledContainer = styled(Container) `
+    grid-template-columns: 1fr 1fr;
+`
+
+
 const StyledLabel = styled(Label)`
     margin-bottom: -8px;
 
@@ -82,7 +87,7 @@ export default function RadioButtonsGroup() {
                 value={value}
                 onChange={handleChange}
             >
-                <Container>
+                <StyledContainer>
                     <StyledLabel>Payment Method</StyledLabel>
                     <FormControlLabel
                         value="e-money"
@@ -125,7 +130,7 @@ export default function RadioButtonsGroup() {
                         </EMoneyContainer>
                     )}
                     {value === "cash" && <CashOnDeliveryMessage />}
-                </Container>
+                </StyledContainer>
             </RadioGroup>
         </FormControl>
     );
