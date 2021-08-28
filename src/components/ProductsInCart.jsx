@@ -7,15 +7,14 @@ const Container = styled.div`
     row-gap: 0.25rem;
     font-size: 0.875rem;
 `;
-const Img = styled.img`
-    /* width: 64px; */
-    max-width: 100%;
-    border-radius: 10px;
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
-    align-self: start;
-    min-height: auto;
-`;
+const Img = {
+    maxWidth: "100%",
+    borderRadius: "10px",
+    gridColumn: "1 / 2",
+    gridRow: "1 / 3",
+    alignSelf: "start",
+    minHeight: "auto",
+};
 
 const ProductName = styled.p`
     text-transform: uppercase;
@@ -38,7 +37,7 @@ export default function ProductsInCart(props) {
 
     return (
         <Container>
-            <Img src={require(`../${props.src.slice(2)}`).default} />
+            <img style={Img} src={require(`../${props.src.slice(2)}`).default} />
             <ProductName>{formattedName}</ProductName>
             <ProductPrice>$ {props.price}</ProductPrice>
         </Container>
