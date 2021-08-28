@@ -1,15 +1,17 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+    max-height: 64px;
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 1rem;
     row-gap: 0.25rem;
-    font-size: ${props => props.fontSize === "small" ? "0.875rem" : "1rem"};
+    font-size: ${(props) => (props.fontSize === "small" ? "0.875rem" : "1rem")};
 `;
 const Img = styled.img`
     width: 100%;
     max-width: 64px;
+    max-height: 64px;
     object-fit: cover;
     border-radius: 10px;
     grid-column: 1 / 2;
@@ -29,10 +31,10 @@ const ProductPrice = styled.p`
 
 export default function ProductsInCart(props) {
     const formattedName = props.name
-    .replace("Wireless", "")
-    .replace("Earphones", "")
-    .replace("Headphones", "")
-    .replace("Speakers", "");
+        .replace("Wireless", "")
+        .replace("Earphones", "")
+        .replace("Headphones", "")
+        .replace("Speakers", "");
 
     return (
         <Container fontSize={props.fontSize}>

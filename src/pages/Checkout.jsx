@@ -55,6 +55,7 @@ export default function Checkout(props) {
 
     const onSubmit = () => {
         setIsOrderComplete(true);
+        console.log("tsadfd")
     };
 
     const closeDialog = () => setIsOrderComplete(false);
