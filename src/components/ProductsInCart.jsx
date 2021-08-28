@@ -9,9 +9,8 @@ const Container = styled.div`
     font-size: ${(props) => (props.fontSize === "small" ? "0.875rem" : "1rem")};
 `;
 const Img = styled.img`
-    width: 100%;
-    max-width: 64px;
-    max-height: 64px;
+    width: 64px;
+    height: 64px;
     object-fit: cover;
     border-radius: 10px;
     grid-column: 1 / 2;
