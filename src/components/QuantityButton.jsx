@@ -3,6 +3,7 @@ import styled from "styled-components";
 const CartButton = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    width: 100px;
     background-color: #f1f1f1;
     align-items: center;
     grid-column: 1 / 2;

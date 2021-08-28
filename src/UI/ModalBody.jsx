@@ -20,6 +20,7 @@ const Cart = styled.h4`
     font-size: 1.125rem;
     line-height: 25px;
     letter-spacing: 1.3px;
+    grid-column: 1 / 3;
 `;
 
 const RemoveButton = styled.button`
@@ -54,7 +55,7 @@ const CartEmpty = styled.p`
 `;
 
 const linkStyle = {
-    gridColumn: '1 / 4'
+    gridColumn: '1 / 4',
 }
 
 export default function ModalBody(props) {

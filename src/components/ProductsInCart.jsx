@@ -6,11 +6,11 @@ const Container = styled.div`
     grid-template-columns: auto 1fr;
     column-gap: 1rem;
     row-gap: 0.25rem;
-    font-size: ${(props) => (props.fontSize === "small" ? "0.875rem" : "1rem")};
+    font-size: 0.875rem;
 `;
 const Img = styled.img`
-    width: 64px;
-    height: 64px;
+    width: 64px !important;
+    height: 64px !important;
     object-fit: cover;
     border-radius: 10px;
     grid-column: 1 / 2;
@@ -36,8 +36,8 @@ export default function ProductsInCart(props) {
         .replace("Speakers", "");
 
     return (
-        <Container fontSize={props.fontSize}>
-            <Img width="64px" height="64px" src={require(`../${props.src.slice(2)}`).default} />
+        <Container>
+            <Img src={require(`../${props.src.slice(2)}`).default} />
             <ProductName>{formattedName}</ProductName>
             <ProductPrice>$ {props.price}</ProductPrice>
         </Container>

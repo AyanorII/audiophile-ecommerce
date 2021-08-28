@@ -9,13 +9,17 @@ const Container = styled.div`
     grid-column: 1 / 4;
     width: 100%;
     align-items: center;
+
+    .quantity-button {
+        justify-self: end;
+    }
 `;
 
 export default function CartMain(props) {
     return (
         <Container>
             <ProductsInCart src={props.src} name={props.name} price={props.price} />
-            <div>
+            <div className="quantity-button">
                 <QuantityButton
                     quantity={props.quantity}
                     subQuantity={props.subQuantity}
