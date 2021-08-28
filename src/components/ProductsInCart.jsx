@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Container = styled.div`
     display: grid;
     grid-template-columns: 64px 1fr;
-    grid-template-rows: 40px 20px;
     column-gap: 1rem;
     row-gap: 0.25rem;
     font-size: 0.875rem;
@@ -14,6 +13,8 @@ const Img = styled.img`
     border-radius: 10px;
     grid-column: 1 / 2;
     grid-row: 1 / 3;
+    align-self: start;
+    min-height: auto;
 `;
 
 const ProductName = styled.p`
@@ -25,6 +26,7 @@ const ProductName = styled.p`
 const ProductPrice = styled.p`
     font-weight: 700;
     color: #00000050;
+    align-self: start;
 `;
 
 export default function ProductsInCart(props) {
