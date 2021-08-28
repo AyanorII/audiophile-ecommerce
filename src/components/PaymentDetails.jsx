@@ -16,7 +16,6 @@ const StyledContainer = styled(Container)`
 `;
 
 const StyledLabel = styled(Label)`
-    margin-bottom: -8px;
 
     @media (min-width: 768px) {
         grid-row: 1 / 3;
@@ -55,9 +54,12 @@ const useStyles = makeStyles({
         margin: 0,
         gridColumn: "1 / 3",
         maxHeight: "56px",
-        "&:first-of-type": {
-            marginBottom: "-8px",
-        },
+        marginBlock: "0.5rem 1rem",
+        "&:last-of-type": {
+            marginTop: 0,
+            marginBottom: "1.5rem"
+        }
+
     },
     span: {
         fontWeight: 700,
@@ -87,7 +89,6 @@ export default function RadioButtonsGroup() {
                 value={value}
                 onChange={handleChange}
             >
-                <StyledContainer>
                     <StyledLabel>Payment Method</StyledLabel>
                     <FormControlLabel
                         value="e-money"
@@ -101,6 +102,9 @@ export default function RadioButtonsGroup() {
                         label="Cash on Delivery"
                         classes={{ root: classes.root }}
                     />
+            </RadioGroup>
+            <StyledContainer>
+
                     {value === "e-money" && (
                         <EMoneyContainer>
                             <InputContainer>
@@ -139,7 +143,6 @@ export default function RadioButtonsGroup() {
                     )}
                     {value === "cash" && <CashOnDeliveryMessage />}
                 </StyledContainer>
-            </RadioGroup>
         </FormControl>
     );
 }
