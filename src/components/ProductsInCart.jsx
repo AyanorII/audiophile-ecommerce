@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-    max-height: 64px;
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 1rem;
@@ -9,8 +8,7 @@ const Container = styled.div`
     font-size: 0.875rem;
 `;
 const Img = styled.img`
-    width: 64px !important;
-    height: 64px !important;
+    width: 64px;
     object-fit: cover;
     border-radius: 10px;
     grid-column: 1 / 2;
