@@ -9,7 +9,6 @@ const Container = styled.div`
 `;
 const Img = styled.img`
     width: 64px;
-    object-fit: cover;
     border-radius: 10px;
     grid-column: 1 / 2;
     grid-row: 1 / 3;
