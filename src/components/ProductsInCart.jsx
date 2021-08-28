@@ -37,7 +37,7 @@ export default function ProductsInCart(props) {
 
     return (
         <Container fontSize={props.fontSize}>
-            <Img src={require(`../${props.src.slice(2)}`).default} />
+            <Img width="64px" height="64px" src={require(`../${props.src.slice(2)}`).default} />
             <ProductName>{formattedName}</ProductName>
             <ProductPrice>$ {props.price}</ProductPrice>
         </Container>
