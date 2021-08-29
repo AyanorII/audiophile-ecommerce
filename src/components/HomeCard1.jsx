@@ -1,5 +1,3 @@
-import {useContext} from "react";
-import { ProductContext } from "../App";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../UI/Button";
@@ -32,13 +30,12 @@ const Product = styled.h2`
 `;
 
 export default function ProductCard1() {
-    const [product, handleProduct] = useContext(ProductContext)
 
     return (
         <Card data-aos="fade-up" data-aos-duration="1000" data-aos-offset="300">
             <Product>zx7 speaker</Product>
             <Link to={"/zx7-speaker"}>
-                <Button background="transparent" backgroundHover="#000" color="#000" border onClick={() => handleProduct('zx7-speaker')}/>
+                <Button background="transparent" backgroundHover="#000" color="#000" border />
             </Link>
                 
         </Card>

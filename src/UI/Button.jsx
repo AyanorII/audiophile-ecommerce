@@ -15,6 +15,11 @@ const StyledButton = styled.button`
     cursor: pointer;
     transition: all 0.2s;
 
+    &:disabled {
+        background-color: #F1F1F1;
+        color: #00000050
+    }
+
     @media (min-width: 1200px) {
         &:hover {
             background-color: ${(props) =>
@@ -37,6 +42,7 @@ export default function Button(props) {
             className={props.className}
             onClick={props.onClick}
             large={props.large}
+            disabled={props.disabled}
         >
             {props.children ? props.children : "see product"}
         </StyledButton>

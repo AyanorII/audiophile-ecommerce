@@ -35,11 +35,13 @@ export default function ProductsInCart(props) {
         .replace("Headphones", "")
         .replace("Speakers", "");
 
+    const formattedPrice = props.price.toLocaleString('de-DE')
+
     return (
         <Container>
-            <img style={Img} src={require(`../${props.src.slice(2)}`).default} />
+            <img style={Img} src={require(`../${props.src.slice(2)}`).default} alt={props.name}/>
             <ProductName>{formattedName}</ProductName>
-            <ProductPrice>$ {props.price}</ProductPrice>
+            <ProductPrice>$ {formattedPrice}</ProductPrice>
         </Container>
     );
 }

@@ -30,6 +30,7 @@ const RemoveButton = styled.button`
     grid-column: 3 / 4;
     background-color: transparent;
     cursor: pointer;
+    font-size: 0.95rem;
 
     @media (min-width: 1200px) {
         &:hover {
@@ -61,7 +62,7 @@ const linkStyle = {
 export default function ModalBody(props) {
     return (
         <StyledModalBody>
-            <Cart>Cart ({props.numberOfItems})</Cart>
+            <Cart>Cart ({props.cart.length})</Cart>
             <RemoveButton onClick={props.clearCart}>Remove all</RemoveButton>
             {props.cart.length === 0 && (
                 <CartEmpty>Your cart is empty</CartEmpty>
@@ -81,7 +82,7 @@ export default function ModalBody(props) {
             <TotalPrice totalPrice={props.totalPrice} />
 
             <Link to="/checkout" style={linkStyle}>
-                <CheckoutButton onClick={props.closeModal}>
+                <CheckoutButton onClick={props.closeModal} disabled={props.cart.length === 0 ? true : false}>
                     Checkout
                 </CheckoutButton>
             </Link>

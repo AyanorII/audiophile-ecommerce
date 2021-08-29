@@ -1,6 +1,5 @@
 import Page from "./Page";
-import { ProductContext } from "../App.js";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import Product from "./Product";
 import DetailsAbout from "./DetailsAbout";
 import Gallery from "./Gallery";
@@ -8,10 +7,8 @@ import CategorySection from "./CategorySection";
 import Recommendations from "./Recommendations";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import data from "../data.json";
 
-export default function ProductDetailPage(props) {
-    const [product, handleProduct, handleCart] = useContext(ProductContext);
+export default function ProductDetailPage({product, handleCart}) {
 
     // * Snackbar, shows "added to cart" message when button is clicked
     const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
@@ -30,7 +27,6 @@ export default function ProductDetailPage(props) {
     return (
         <Page>
             <Product
-                dataAos="zoom-in"
                 name={product.name}
                 description={product.description}
                 src={product.image.mobile}

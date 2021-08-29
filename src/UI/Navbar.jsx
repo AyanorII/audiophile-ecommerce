@@ -6,7 +6,7 @@ import CategorySection from "../components/CategorySection";
 import Logo from "../components/Logo";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import CategoryLinks from "../components/CategoryLinks";
-import Badge from "@material-ui/core/Badge";
+import CartIcon from "../components/CartIcon";
 
 const StyledNavbar = styled.nav`
     display: grid;
@@ -114,16 +114,6 @@ const NavbarLogo = styled(Logo)`
     }
 `;
 
-const NavbarPages = styled(CategoryLinks)`
-    display: none;
-
-    @media (min-width: 1200px) {
-        background-color: #000;
-        display: block;
-        padding: 0;
-    }
-`;
-
 const NavbarCategorySection = styled(CategorySection)`
     @media (min-width: 1200px) {
         display: none;
@@ -138,24 +128,25 @@ export default function Navbar(props) {
     };
 
     const closeMenu = () => {
-        setIsNavbarOpen(false)
-    }
+        setIsNavbarOpen(false);
+    };
 
     return (
         <ClickAwayListener onClickAway={() => setIsNavbarOpen(false)}>
             <StyledNavbar>
                 <Nav>
                     <button className="menu" onClick={handleMenu}></button>
-                    <NavbarLogo onClick={closeMenu}/>
-                    <Badge badgeContent={props.numberOfItems} color="primary">
-                        <button className="cart" onClick={props.openModal}>
-                            <img src={cartIcon} alt="cart" />
-                        </button>
-                    </Badge>
+                    <NavbarLogo onClick={closeMenu} />
+                    <CartIcon
+                        icon={cartIcon}
+                        numberOfItems={props.numberOfItems}
+                        openModal={props.openModal}
+                    />
+
                 </Nav>
-                <NavLinks isNavbarOpen={isNavbarOpen} >
-                    <NavbarCategorySection onClick={handleMenu}/>
-                    <CategoryLinks/>
+                <NavLinks isNavbarOpen={isNavbarOpen}>
+                    <NavbarCategorySection onClick={handleMenu} />
+                    <CategoryLinks />
                 </NavLinks>
             </StyledNavbar>
         </ClickAwayListener>

@@ -25,9 +25,9 @@ const StyledPage = styled.div`
 
 export default function Page(props) {
     return (
-        <StyledPage padding={props.padding} checkout={props.checkout}>
+        <StyledPage padding={props.padding}>
             {props.children}
-            {!props.checkout && <BestGear />}
+            {!props.blank && <BestGear />}
         </StyledPage>
     );
 }

@@ -1,5 +1,5 @@
 // * Dependencies
-import { useEffect, useState, createContext } from "react";
+import { useEffect, useState } from "react";
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Aos from "aos";
@@ -11,8 +11,7 @@ import {
     Redirect,
 } from "react-router-dom";
 import { ThemeProvider as SCThemeProvider } from "styled-components";
-import { Modal } from "@material-ui/core";
-import {Dialog} from "@material-ui/core"
+import { Dialog } from "@material-ui/core";
 
 // * Components
 import ScrollToTop from "./components/ScrollToTop.jsx";
@@ -31,7 +30,7 @@ import data from "./data.json";
 
 // * Style
 import GlobalStyle from "./components/GlobalStyle.jsx";
-
+import PageNotFound from "./pages/PageNotFound.jsx";
 // ******************************************************** */
 
 const theme = createTheme({
@@ -41,26 +40,15 @@ const theme = createTheme({
     },
 });
 
-export const ProductContext = createContext();
-
 function App() {
     // * Initialize AOS (Animate On Scroll) library
     useEffect(() => {
         Aos.init({ duration: 1300, once: true });
     }, []);
 
-    // * Sets displayed product when click in "See Product"
-    const [productDetail, setProductDetail] = useState(data[0]);
-    const handleProduct = (item) => {
-        const filteredItem = data.filter(
-            (dataProduct) => dataProduct.slug === item
-        );
-        setProductDetail(filteredItem[0]);
-    };
-
     // * Cart functions --------------------------------------
     const [cart, setCart] = useState([]);
-    console.log(cart)
+    console.log(cart);
     const updateCart = (product, operation, quantity = 1) => {
         // * Checks if product is in cart
         const target = cart.find((x) => x.product === product);
@@ -134,8 +122,15 @@ function App() {
                         <ScrollToTop />
                         <Navbar
                             openModal={openModal}
+                            closeModal={closeModal}
                             numberOfItems={cart.length}
+                            totalPrice={totalPrice}
+                            cart={cart}
+                            subQuantity={subQuantity}
+                            addQuantity={addQuantity}
+                            clearCart={clearCart}
                         />
+                        {/* Cart */}
                         <Dialog
                             open={isModalOpen}
                             onClose={closeModal}
@@ -143,7 +138,6 @@ function App() {
                         >
                             <ModalBody
                                 cart={cart}
-                                numberOfItems={cart.length}
                                 totalPrice={totalPrice}
                                 subQuantity={subQuantity}
                                 addQuantity={addQuantity}
@@ -151,37 +145,39 @@ function App() {
                                 closeModal={closeModal}
                             />
                         </Dialog>
-                        <ProductContext.Provider
-                            value={[productDetail, handleProduct, handleCart]}
-                        >
-                            <Switch>
-                                <Route path="/" exact component={Home} />
-                                <Redirect from="/home" to="/" />
+
+                        <Switch>
+                            <Route path="/" exact component={Home} />
+                            <Redirect from="/home" to="/" />
+                            <Route path="/headphones" component={Headphones} />
+                            <Route path="/speakers" component={Speakers} />
+                            <Route path="/earphones" component={Earphones} />
+                            <Route
+                                path="/checkout"
+                                render={() => (
+                                    <Checkout
+                                        cart={cart}
+                                        totalPrice={totalPrice}
+                                        setCart={setCart}
+                                    />
+                                )}
+                            />
+                            {data.map((product) => (
                                 <Route
-                                    path="/headphones"
-                                    component={Headphones}
-                                />
-                                <Route path="/speakers" component={Speakers} />
-                                <Route
-                                    path="/earphones"
-                                    component={Earphones}
-                                />
-                                <Route
-                                    path="/checkout"
+                                    key={product.id}
+                                    exact
+                                    path={"/" + product.slug}
                                     render={() => (
-                                        <Checkout
-                                            cart={cart}
-                                            totalPrice={totalPrice}
-                                            setCart={setCart}
+                                        <ProductDetailPage
+                                            product={product}
+                                            handleCart={handleCart}
                                         />
                                     )}
                                 />
-                                <Route
-                                    path="/:slug"
-                                    component={ProductDetailPage}
-                                />
-                            </Switch>
-                        </ProductContext.Provider>
+                            ))}
+                            <Route component={PageNotFound}/>
+                        </Switch>
+
                         <Footer />
                     </div>
                 </SCThemeProvider>

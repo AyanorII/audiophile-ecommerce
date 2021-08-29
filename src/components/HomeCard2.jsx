@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { ProductContext } from "../App";
 import styled from "styled-components";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
@@ -79,7 +77,6 @@ const Title = styled.h3`
 `;
 
 export default function ProductCard2() {
-    const [product, handleProduct] = useContext(ProductContext);
 
     return (
         <Container >
@@ -124,7 +121,6 @@ export default function ProductCard2() {
                             backgroundHover="#000"
                             border
                             color="#000"
-                            onClick={() => handleProduct("yx1-earphones")}
                         />
                     </Link>
                 </Content>

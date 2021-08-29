@@ -1,5 +1,3 @@
-import {useContext} from "react";
-import { ProductContext } from "../App";
 import styled from "styled-components";
 import speakerMobile from "../assets/home/mobile/image-speaker-zx9.png";
 import speakerTablet from "../assets/home/tablet/image-speaker-zx9.png";
@@ -119,7 +117,6 @@ const Content = styled.div`
 `;
 
 export default function PremiumSpeaker(props) {
-    const [product, handleProduct] = useContext(ProductContext)
 
     return (
         <Card>
@@ -132,8 +129,8 @@ export default function PremiumSpeaker(props) {
                     Upgrade to premium speakers that are phenomenally built to
                     deliver truly remarkable sound.
                 </Description>
-                <Link to={`/product/${product.slug}`}>
-                    <Button background="#000" backgroundHover="#4C4C4C" onClick={() => handleProduct('zx9-speaker')}/>
+                <Link to={`/product/zx9-speaker`}>
+                    <Button background="#000" backgroundHover="#4C4C4C"/>
                 </Link>
             </Content>
         </Card>

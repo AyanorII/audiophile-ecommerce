@@ -41,7 +41,6 @@ const BG = styled.div`
     }
 `;
 
-
 export default function Checkout(props) {
     const form = useForm();
     const {
@@ -56,7 +55,6 @@ export default function Checkout(props) {
 
     const onSubmit = () => {
         setIsOrderComplete(true);
-        console.log("tsadfd")
     };
 
     const closeDialog = () => setIsOrderComplete(false);
@@ -65,7 +63,7 @@ export default function Checkout(props) {
 
     return (
         <BG>
-            <Page checkout padding>
+            <Page blank padding>
                 <Heading>Checkout</Heading>
                 <FormProvider {...form}>
                     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -84,16 +82,17 @@ export default function Checkout(props) {
                     fullWidth
                     maxWidth="sm"
                 >
-
-                    <OrderComplete
-                        name={item.product}
-                        src={item.img}
-                        price={item.price}
-                        quantity={item.quantity}
-                        numberOfItems={props.cart.length}
-                        totalPrice={props.totalPrice}
-                        setCart={props.setCart}
-                    />
+                    {item !== undefined && (
+                        <OrderComplete
+                            name={item.product}
+                            src={item.img}
+                            price={item.price}
+                            quantity={item.quantity}
+                            numberOfItems={props.cart.length}
+                            totalPrice={props.totalPrice}
+                            setCart={props.setCart}
+                        />
+                    )}
                 </Dialog>
             </Page>
         </BG>

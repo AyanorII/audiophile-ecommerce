@@ -82,7 +82,6 @@ const ProductName = styled.h4`
 `;
 
 export default function Recommendations(props) {
-    const [product, handleProduct] = useContext(ProductContext)
 
     return (
         <Section>
@@ -113,7 +112,7 @@ export default function Recommendations(props) {
                         />
                         <ProductName>{item.name}</ProductName>
                         <Link to={`/${item.slug}`}>
-                            <Button onClick={() => handleProduct(item.slug)}/>
+                            <Button/>
                         </Link>
                     </div>
                 ))}

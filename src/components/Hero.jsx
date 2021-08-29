@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
 import Button from "../UI/Button";
 import Paragraph from "../components/Paragraph";
-import { ProductContext } from "../App.js";
 import { Link } from "react-router-dom";
 
 const StyledHero = styled.section`
@@ -99,14 +97,9 @@ const Description = styled(Paragraph)`
 `;
 
 export default function Hero() {
-    const [product, handleProduct] = useContext(ProductContext);
-
     return (
         <StyledHero>
-            <NewProduct data-aos="fade-in">
-                {" "}
-                New Product
-            </NewProduct>
+            <NewProduct data-aos="fade-in"> New Product</NewProduct>
             <Heading
                 data-aos="fade-in"
                 data-aos-delay="1000"
@@ -114,17 +107,17 @@ export default function Hero() {
             >
                 XX99 Mark II Headphones
             </Heading>
-            <div data-aos="fade-in" data-aos-duration="2100" data-aos-delay="2000">
+            <div
+                data-aos="fade-in"
+                data-aos-duration="2100"
+                data-aos-delay="2000"
+            >
                 <Description>
                     Experience natural, lifelike audio and exceptional build
                     quality made for the passionate music enthusiast.
                 </Description>
                 <Link to={"/xx99-mark-two-headphones"}>
-                    <Button
-                        onClick={() =>
-                            handleProduct("xx99-mark-two-headphones")
-                        }
-                    />
+                    <Button />
                 </Link>
             </div>
         </StyledHero>

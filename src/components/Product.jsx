@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { ProductContext } from "../App";
 import styled from "styled-components";
 import Button from "../UI/Button";
 import AddToCart from "./AddToCart";
@@ -34,7 +32,7 @@ const StyledProduct = styled.article`
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%)
+                transform: translate(-50%, -50%);
             }
         }
     }
@@ -108,7 +106,6 @@ const ImageContainer = styled.div`
     @media (min-width: 768px) {
         grid-row: 1 / 3;
         height: 100%;
-        
     }
 
     @media (min-width: 1200px) {
@@ -126,11 +123,15 @@ const ProductLink = styled(Link)`
 `;
 
 export default function Product(props) {
-    const [product, handleProduct] = useContext(ProductContext);
-
     return (
-        <StyledProduct details={props.details} data-aos={props.dataAos} data-aos-offset="350" style={props.style}>
-            <ImageContainer index={props.index} data-aos="zoom">
+        <StyledProduct
+            details={props.details}
+            data-aos="zoom-in"
+            data-aos-offset="350"
+            data-aos-duration="650"
+            style={props.style}
+        >
+            <ImageContainer index={props.index}>
                 <ProductImage
                     src={props.src}
                     className="mobile"
@@ -154,10 +155,10 @@ export default function Product(props) {
                     {props.description}
                 </Description>
             </Content>
-        
+
             {!props.details && (
                 <ProductLink to={`/${props.slug}`}>
-                    <Button onClick={() => handleProduct(props.slug)} />
+                    <Button />
                 </ProductLink>
             )}
             {props.details && (
