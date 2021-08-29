@@ -61,6 +61,14 @@ const StyledFooter = styled.footer`
             align-self: end;
         }
     }
+
+    @media (min-width: 1440px) {
+        padding-inline: 15%;
+
+        &::before {
+            left: 15%;
+        }
+    }
 `;
 
 const Span = styled(Paragraph)`
