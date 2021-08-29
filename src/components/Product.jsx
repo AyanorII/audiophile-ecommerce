@@ -126,9 +126,9 @@ export default function Product(props) {
     return (
         <StyledProduct
             details={props.details}
-            data-aos="zoom-in"
+            data-aos={props.dataAos}
             data-aos-offset="350"
-            data-aos-duration="650"
+            data-aos-duration={props.dataAosDuration}
             style={props.style}
         >
             <ImageContainer index={props.index}>

@@ -82,7 +82,7 @@ export default function ModalBody(props) {
             <TotalPrice totalPrice={props.totalPrice} />
 
             <Link to="/checkout" style={linkStyle}>
-                <CheckoutButton onClick={props.closeModal} disabled={props.cart.length === 0 ? true : false}>
+                <CheckoutButton large onClick={props.closeModal} disabled={props.cart.length === 0 ? true : false}>
                     Checkout
                 </CheckoutButton>
             </Link>

@@ -17,7 +17,12 @@ const StyledButton = styled.button`
 
     &:disabled {
         background-color: #F1F1F1;
-        color: #00000050
+        color: #00000050;
+        cursor: not-allowed;
+
+        &:hover {
+            background-color: #F1F1F1;
+        }
     }
 
     @media (min-width: 1200px) {

@@ -27,6 +27,8 @@ export default function ProductDetailPage({product, handleCart}) {
     return (
         <Page>
             <Product
+                dataAos="zoom-in"
+                dataAosDuration="650"
                 name={product.name}
                 description={product.description}
                 src={product.image.mobile}
