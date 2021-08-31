@@ -53,6 +53,7 @@ export default function Input({
             type={type ? type : "text"}
             id={id}
             placeholder={placeholder}
+            aria-invalid={errors.name ? true : false}
             {...register(name, { required: required })}
         ></StyledInput>
     );

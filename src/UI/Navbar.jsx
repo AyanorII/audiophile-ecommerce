@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import navButton from "../assets/shared/tablet/icon-hamburger.svg";
 import cartIcon from "../assets/shared/desktop/icon-cart.svg";
@@ -8,33 +8,20 @@ import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import CategoryLinks from "../components/CategoryLinks";
 import CartIcon from "../components/CartIcon";
 
-const StyledNavbar = styled.nav`
+const Header = styled.header`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
     position: fixed;
     top: 0;
     width: 100%;
-    height: 97px;
     z-index: 999;
-
-    @media (min-width: 1200px) {
-        grid-template-columns: 1fr 2fr 1fr;
-    }
-`;
-
-const Nav = styled.div`
     background-color: #000;
-    grid-column: 1 / 4;
-    display: flex;
-    justify-content: space-between;
-    align-self: center;
-    padding: 2.25rem 5.2%;
-    position: relative;
-    z-index: 999;
+    padding: 33.5px 5%;
 
     button {
         border: none;
-        background-color: inherit;
+        background: inherit;
     }
 
     .menu {
@@ -45,20 +32,37 @@ const Nav = styled.div`
         background-size: cover;
         background-repeat: no-repeat;
         align-self: center;
+        grid-column: 1 / 2;
+    }
+
+    .logo {
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+        justify-self: center;
     }
 
     .cart {
+        grid-row: 1 / 2;
+        grid-column: 3 / 4;
         justify-self: end;
         width: 1.5rem;
     }
 
-    @media (min-width: 1200px) {
-        grid-row: 1 / 2;
-        padding-inline: 11.4%;
+    @media (min-width: 1024px) {
+        grid-template-columns: 1fr 2fr 1fr;
 
         .menu {
             display: none;
         }
+
+        .logo {
+            grid-column: 1 / 2;
+            justify-self: start;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        padding-inline: 11.4%;
     }
 
     @media (min-width: 1440px) {
@@ -70,6 +74,32 @@ const Nav = styled.div`
     }
 `;
 
+const Nav = styled.nav`
+    grid-column: 1 / 4;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: -5.8%;
+    width: 100vw;
+    height: 90vh;
+    transform: translateY(
+        ${(props) => (props.isNavbarOpen ? "97px" : "-200%")}
+    );
+    transition: all 0.5s;
+
+    @media (min-width: 1024px) {
+        transform: unset;
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        position: static;
+        width: auto;
+        height: auto;
+    }
+`;
+
 const NavLinks = styled.div`
     display: flex;
     flex-direction: column;
@@ -77,51 +107,30 @@ const NavLinks = styled.div`
     justify-self: center;
     background-color: #fff;
     padding: 5rem 6.4% 0;
-    transform: translateY(${(props) => (props.isNavbarOpen ? "0" : "-200%")});
-    transition: all 0.5s;
     width: 100%;
     overflow: scroll;
-    height: 90vh;
+    transition: all 0.5s;
     box-shadow: ${(props) =>
-        props.isNavbarOpen ? "0 0 1000px 1000px #00000080" : "0"};
+        props.isNavbarOpen ? "0 1000px 500px 500px #00000050" : "0"};
 
-    @media (min-width: 768px) {
-        height: 45vh;
-    }
-
-    @media (min-width: 1200px) {
-        height: 100%;
-        transform: unset;
-        grid-column: 2 / 3;
-        grid-row: 1 / 2;
-        position: relative;
-        z-index: 999;
+    @media (min-width: 1024px) {
         padding: 0;
-        overflow: hidden;
         background-color: inherit;
-        display: grid;
         place-items: center;
-    }
-`;
-
-const NavbarLogo = styled(Logo)`
-    @media (min-width: 768px) {
-        margin-inline: 6% auto;
-    }
-
-    @media (min-width: 1200px) {
-        margin-inline: 0 auto;
+        overflow: hidden;
     }
 `;
 
 const NavbarCategorySection = styled(CategorySection)`
-    @media (min-width: 1200px) {
+    @media (min-width: 1024px) {
         display: none;
     }
 `;
 
 export default function Navbar(props) {
+    
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+    const [isCartExpanded, setIsCartExpanded] = useState(false);
 
     const handleMenu = () => {
         setIsNavbarOpen((prev) => !prev);
@@ -131,24 +140,46 @@ export default function Navbar(props) {
         setIsNavbarOpen(false);
     };
 
+    const openCart = () => {
+        setIsCartExpanded(true);
+    };
+
+    const handleClickAway = () => {
+        setIsNavbarOpen(false);
+        setIsCartExpanded(false);
+    };
+
     return (
-        <ClickAwayListener onClickAway={() => setIsNavbarOpen(false)}>
-            <StyledNavbar>
-                <Nav>
-                    <button className="menu" onClick={handleMenu}></button>
-                    <NavbarLogo onClick={closeMenu} />
+        <ClickAwayListener onClickAway={handleClickAway}>
+            <Header isNavbarOpen={isNavbarOpen} >
+                <button
+                    aria-label="menu button"
+                    aria-expanded={isNavbarOpen}
+                    aria-controls="nav"
+                    className="menu"
+                    onClick={handleMenu}
+                ></button>
+                <div className="logo">
+                    <Logo onClick={closeMenu} />
+                </div>
+                <Nav id="nav" isNavbarOpen={isNavbarOpen}>
+                    <NavLinks isNavbarOpen={isNavbarOpen}>
+                        <NavbarCategorySection onClick={handleMenu} />
+                        <div className="category-links">
+                            <CategoryLinks />
+                        </div>
+                    </NavLinks>
+                </Nav>
+                <div className="cart">
                     <CartIcon
                         icon={cartIcon}
                         numberOfItems={props.numberOfItems}
                         openModal={props.openModal}
+                        isCartExpanded={isCartExpanded}
+                        openCart={openCart}
                     />
-
-                </Nav>
-                <NavLinks isNavbarOpen={isNavbarOpen}>
-                    <NavbarCategorySection onClick={handleMenu} />
-                    <CategoryLinks />
-                </NavLinks>
-            </StyledNavbar>
+                </div>
+            </Header>
         </ClickAwayListener>
     );
 }

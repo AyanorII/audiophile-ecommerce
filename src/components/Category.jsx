@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const StyledHeader = styled.header`
+const Category = styled.div`
     background-color: #000;
     text-align: center;
     height: 102px;
@@ -30,8 +30,8 @@ const StyledHeader = styled.header`
 
 export default function Header(props) {
     return (
-        <StyledHeader>
+        <Category>
             {props.children}
-        </StyledHeader>
+        </Category>
     )
 }

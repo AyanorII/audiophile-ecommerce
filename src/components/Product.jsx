@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../UI/Button";
+import Button from "../UI/LinkButton";
 import AddToCart from "./AddToCart";
 import Paragraph from "./Paragraph";
 import ProductImage from "./ProductImage";
@@ -115,7 +115,7 @@ const ImageContainer = styled.div`
     }
 `;
 
-const ProductLink = styled(Link)`
+const ProductLink = styled(Button)`
     @media (min-width: 1200px) {
         margin-right: auto;
         align-self: start;
@@ -156,11 +156,7 @@ export default function Product(props) {
                 </Description>
             </Content>
 
-            {!props.details && (
-                <ProductLink to={`/${props.slug}`}>
-                    <Button />
-                </ProductLink>
-            )}
+            {!props.details && <ProductLink to={`/${props.slug}`} />}
             {props.details && (
                 <AddToCart
                     handleCart={props.handleCart}

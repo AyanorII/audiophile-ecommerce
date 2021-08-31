@@ -111,6 +111,7 @@ export default function RadioButtonsGroup() {
                                 <Label>e-Money Number</Label>
                                 <Input
                                     name="eNumber"
+                                    id="eNumber"
                                     type="number"
                                     placeholder="238521993"
                                     required={
@@ -127,6 +128,7 @@ export default function RadioButtonsGroup() {
                                 <Label>e-Money PIN</Label>
                                 <Input
                                     name="ePIN"
+                                    id="ePIN"
                                     type="number"
                                     placeholder="6891"
                                     required={

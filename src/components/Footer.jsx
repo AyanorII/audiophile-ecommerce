@@ -69,6 +69,14 @@ const StyledFooter = styled.footer`
             left: 15%;
         }
     }
+
+    @media (min-width: 1920px) {
+        padding-inline: 17.5%;
+
+        &::before {
+            left: 17.5%;
+        }
+    }
 `;
 
 const Span = styled(Paragraph)`
@@ -93,7 +101,7 @@ export default function Footer() {
     return (
         <StyledFooter>
             <Logo />
-            <CategoryLinks className="category-links"/>
+            <CategoryLinks footer className="category-links"/>
             <FooterParagraph color="#FFF">
                 Audiophile is an all in one stop to fulfill your audio needs.
                 We're a small team of music lovers and sound specialists who are

@@ -1,5 +1,5 @@
 // * Dependencies
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import Aos from "aos";
@@ -24,13 +24,13 @@ import Earphones from "./pages/Earphones";
 import ProductDetailPage from "./components/ProductDetailPage.jsx";
 import ModalBody from "./UI/ModalBody.jsx";
 import Checkout from "./pages/Checkout.jsx";
+import PageNotFound from "./pages/PageNotFound.jsx";
 
 // * Data
 import data from "./data.json";
 
 // * Style
 import GlobalStyle from "./components/GlobalStyle.jsx";
-import PageNotFound from "./pages/PageNotFound.jsx";
 // ******************************************************** */
 
 const theme = createTheme({
@@ -41,8 +41,9 @@ const theme = createTheme({
 });
 
 function App() {
-    // * Initialize AOS (Animate On Scroll) library
+
     useEffect(() => {
+        // * Initialize AOS (Animate On Scroll) library
         Aos.init({ duration: 1300, once: true });
     }, []);
 
@@ -135,6 +136,7 @@ function App() {
                             open={isModalOpen}
                             onClose={closeModal}
                             disableScrollLock
+                            id="cart"
                         >
                             <ModalBody
                                 cart={cart}
@@ -175,7 +177,7 @@ function App() {
                                     )}
                                 />
                             ))}
-                            <Route component={PageNotFound}/>
+                            <Route component={PageNotFound} />
                         </Switch>
 
                         <Footer />

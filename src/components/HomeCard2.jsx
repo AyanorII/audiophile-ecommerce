@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import Button from "../UI/Button";
+import LinkButton from "../UI/LinkButton";
 import Card from "../UI/Card";
-import { Link } from "react-router-dom";
 
 const Container = styled.section`
     display: grid;
@@ -77,9 +76,8 @@ const Title = styled.h3`
 `;
 
 export default function ProductCard2() {
-
     return (
-        <Container >
+        <Container>
             <Card className="image">
                 <div data-aos-offset="300" data-aos="fade-right">
                     <img
@@ -115,14 +113,13 @@ export default function ProductCard2() {
             >
                 <Content data-aos="fade-left" data-aos-offset="300">
                     <Title>yx1 earphones</Title>
-                    <Link to={"/yx1-earphones"}>
-                        <Button
-                            background="transparent"
-                            backgroundHover="#000"
-                            border
-                            color="#000"
-                        />
-                    </Link>
+                    <LinkButton
+                        to="/yx1-earphones"
+                        background="transparent"
+                        backgroundHover="#000"
+                        border
+                        color="#000"
+                    />
                 </Content>
             </Card>
         </Container>

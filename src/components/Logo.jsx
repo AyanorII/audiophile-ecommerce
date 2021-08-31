@@ -4,11 +4,11 @@ import logo from "../assets/shared/desktop/logo.svg";
 
 export default function Logo(props) {
     return (
-        <Link to="/">
+        <Link to="/" aria-label="homepage">
             <img
                 className={props.className}
                 src={logo}
-                alt="logo"
+                alt="audiophile"
                 onClick={props.onClick}
             />
         </Link>

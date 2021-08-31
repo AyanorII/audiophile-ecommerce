@@ -16,7 +16,7 @@ const CartButton = styled.div`
         font-size: 1.2rem;
 
         &:hover {
-            color: ${props => props.theme.palette.primary.main}
+            color: ${(props) => props.theme.palette.primary.main};
         }
     }
 
@@ -28,10 +28,10 @@ const CartButton = styled.div`
 
 export default function QuantityButton(props) {
     return (
-        <CartButton>
-            <button onClick={() => props.subQuantity(props.name)}>-</button>
-            <span>{props.quantity}</span>
-            <button onClick={() => props.addQuantity(props.name)}>+</button>
+        <CartButton aria-live="polite" aria-atomic="true">
+            <button aria-label="decrease quantity" onClick={() => props.subQuantity(props.name)}>-</button>
+            <span aria-label="quantity">{props.quantity}</span>
+            <button aria-label="increase quantity" onClick={() => props.addQuantity(props.name)}>+</button>
         </CartButton>
     );
 }

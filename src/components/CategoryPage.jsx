@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../components/Header'
+import Category from './Category'
 import Page from '../components/Page'
 import ProductsSection from '../components/ProductsSection'
 import CategorySection from '../components/CategorySection'
@@ -7,7 +7,7 @@ import CategorySection from '../components/CategorySection'
 export default function CategoryPage(props) {
     return (
         <Page>
-            <Header>{props.category}</Header>
+            <Category>{props.category}</Category>
             <ProductsSection category={props.category}/>
             <CategorySection />
         </Page>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../UI/Button";
+import LinkButton from "../UI/LinkButton";
 import GrandTotal from "./GrandTotal";
 import ProductsInCart from "./ProductsInCart";
 
@@ -33,9 +33,11 @@ const ItemContainer = styled.div`
     align-items: center;
 `;
 
-const SummaryButton = styled(Button)`
+const SummaryButton = styled(LinkButton)`
     width: 100%;
 `;
+
+
 
 export default function Summary(props) {
     return (
@@ -62,7 +64,9 @@ export default function Summary(props) {
                 })}
             </Items>
             <GrandTotal total={props.totalPrice} />
-            <SummaryButton type="submit" >Continue & pay</SummaryButton>
+            <SummaryButton renderedAs="button" type="submit">
+                Continue & pay
+            </SummaryButton>
         </SummarySection>
     );
 }

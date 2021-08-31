@@ -10,7 +10,7 @@ const Message = styled.span`
 
 export default function ErrorMessage(props) {
     return (
-        <Message>
+        <Message role="alert">
             {props.children}
         </Message>
     )

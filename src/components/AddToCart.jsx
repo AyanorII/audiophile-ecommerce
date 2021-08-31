@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Button from "../UI/Button";
+import LinkButton from "../UI/LinkButton";
 import QuantityButton from "./QuantityButton";
 
 
@@ -52,7 +52,7 @@ export default function AddToCart(props) {
                 addQuantity={addQuantity}
                 subQuantity={subQuantity}
             />
-            <Button onClick={handleCart}>Add to cart</Button>
+            <LinkButton renderedAs="button" onClick={handleCart}>Add to cart</LinkButton>
 
         </Container>
     );

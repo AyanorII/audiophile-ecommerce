@@ -2,9 +2,8 @@ import styled from "styled-components";
 import speakerMobile from "../assets/home/mobile/image-speaker-zx9.png";
 import speakerTablet from "../assets/home/tablet/image-speaker-zx9.png";
 import speakerDesktop from "../assets/home/desktop/image-speaker-zx9.png";
-import Button from "../UI/Button";
+import LinkButton from "../UI/LinkButton";
 import Paragraph from "./Paragraph";
-import { Link } from "react-router-dom";
 
 const Card = styled.div`
     display: grid;
@@ -116,7 +115,7 @@ const Content = styled.div`
     }
 `;
 
-export default function PremiumSpeaker(props) {
+export default function PremiumSpeaker() {
 
     return (
         <Card>
@@ -129,9 +128,7 @@ export default function PremiumSpeaker(props) {
                     Upgrade to premium speakers that are phenomenally built to
                     deliver truly remarkable sound.
                 </Description>
-                <Link to={`/product/zx9-speaker`}>
-                    <Button background="#000" backgroundHover="#4C4C4C"/>
-                </Link>
+                    <LinkButton to='/product/zx9-speaker' background="#000" backgroundHover="#4C4C4C"/>
             </Content>
         </Card>
     );

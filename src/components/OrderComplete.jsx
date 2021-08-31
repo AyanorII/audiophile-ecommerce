@@ -3,8 +3,7 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Paragraph from "../components/Paragraph";
 import Card from "../UI/Card";
 import ProductsInCart from "./ProductsInCart";
-import Button from "../UI/Button";
-import { Link } from "react-router-dom";
+import LinkButton from "../UI/LinkButton";
 
 const Content = styled.div`
     display: flex;
@@ -97,8 +96,6 @@ const StyledParagraph = styled(Paragraph)`
 `;
 
 export default function OrderComplete(props) {
-
-
     return (
         <Content>
             <CheckCircleIcon color="primary" fontSize="large" />
@@ -128,9 +125,9 @@ export default function OrderComplete(props) {
                     <span>$ {props.totalPrice.toLocaleString("de-DE")}</span>
                 </Total>
             </StyledCard>
-            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-                <Button large onClick={() => props.setCart([])}>Back to home</Button>
-            </Link>
+            <LinkButton to="/" large onClick={() => props.setCart([])}>
+                Back to home
+            </LinkButton>
         </Content>
     );
 }

@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import Button from "../UI/Button";
+import LinkButton from "../UI/LinkButton";
 import Paragraph from "../components/Paragraph";
-import { Link } from "react-router-dom";
 
 const StyledHero = styled.section`
     text-align: center;
@@ -30,18 +29,20 @@ const StyledHero = styled.section`
             .default});
         margin-bottom: 7.5rem;
         text-align: left;
-        height: 90vh;
-        padding: 15.6% 11.5% 11%;
+        height: 91vh;
+        padding: 15.6% 15.4% 11%;
         margin-inline: -15%;
     }
 
     @media (min-width: 1440px) {
         margin-inline: -24%;
-        padding-inline: 25%;
+        padding-inline: 24%;
     }
 
     @media (min-width: 1920px) {
         margin-inline: -28%;
+        padding-inline: 28%;
+
     }
 `;
 
@@ -116,9 +117,7 @@ export default function Hero() {
                     Experience natural, lifelike audio and exceptional build
                     quality made for the passionate music enthusiast.
                 </Description>
-                <Link to={"/xx99-mark-two-headphones"}>
-                    <Button />
-                </Link>
+                    <LinkButton to="/xx99-mark-two-headphones" />
             </div>
         </StyledHero>
     );

@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const StyledButton = styled.button`
+const StyledLink = styled(Link)`
     background-color: ${(props) =>
         props.background ? props.background : props.theme.palette.primary.main};
     padding: 0.9375rem;
@@ -14,6 +15,7 @@ const StyledButton = styled.button`
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.2s;
+    text-decoration: none;
 
     &:disabled {
         background-color: #F1F1F1;
@@ -36,20 +38,22 @@ const StyledButton = styled.button`
     }
 `;
 
-export default function Button(props) {
+export default function LinkButton({className, ...props}) {
     return (
-        <StyledButton
+        <StyledLink
             background={props.background}
             border={props.border}
             color={props.color}
             backgroundHover={props.backgroundHover}
             data-aos={props.dataAos}
-            className={props.className}
+            className={className}
             onClick={props.onClick}
             large={props.large}
             disabled={props.disabled}
+            to={props.to}
+            as={props.renderedAs}
         >
             {props.children ? props.children : "see product"}
-        </StyledButton>
+        </StyledLink>
     );
 }

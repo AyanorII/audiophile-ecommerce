@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import CartMain from "../components/CartMain";
 import TotalPrice from "../components/TotalPrice";
-import Button from "./Button";
+import LinkButton from "./LinkButton";
 
 const StyledModalBody = styled.div`
     display: grid;
@@ -39,25 +39,20 @@ const RemoveButton = styled.button`
     }
 `;
 
-const CheckoutButton = styled(Button)`
+const CheckoutButton = styled(LinkButton)`
     grid-column: 1 / 4;
     margin-top: -8px;
     width: 100%;
-
-    a {
-        color: #fff;
-        text-decoration: none;
-    }
 `;
+
+const DisabledButton = styled(LinkButton)`
+
+`
 
 const CartEmpty = styled.p`
     grid-column: 1 / 4;
     opacity: 0.5;
 `;
-
-const linkStyle = {
-    gridColumn: '1 / 4',
-}
 
 export default function ModalBody(props) {
     return (
@@ -80,12 +75,14 @@ export default function ModalBody(props) {
                     />
                 ))}
             <TotalPrice totalPrice={props.totalPrice} />
-
-            <Link to="/checkout" style={linkStyle}>
-                <CheckoutButton large onClick={props.closeModal} disabled={props.cart.length === 0 ? true : false}>
-                    Checkout
-                </CheckoutButton>
-            </Link>
+            {props.cart.length === 0 && <CheckoutButton renderedAs="button" disabled>Checkout</CheckoutButton>}
+            {props.cart.length > 0 && <CheckoutButton
+                to="/checkout"
+                large
+                onClick={props.closeModal}
+            >
+                Checkout
+            </CheckoutButton>}
         </StyledModalBody>
     );
 }

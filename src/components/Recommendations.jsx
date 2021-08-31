@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Button from "../UI/Button";
-import { useContext } from "react";
-import { ProductContext } from "../App";
+import LinkButton from "../UI/LinkButton";
+
 
 const Section = styled.section`
     text-align: center;
@@ -82,7 +80,6 @@ const ProductName = styled.h4`
 `;
 
 export default function Recommendations(props) {
-
     return (
         <Section>
             <Heading>You may also like</Heading>
@@ -111,9 +108,7 @@ export default function Recommendations(props) {
                             className="desktop"
                         />
                         <ProductName>{item.name}</ProductName>
-                        <Link to={`/${item.slug}`}>
-                            <Button/>
-                        </Link>
+                        <LinkButton to={`/${item.slug}`} />
                     </div>
                 ))}
             </Container>

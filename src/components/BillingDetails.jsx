@@ -22,9 +22,9 @@ export default function BillingDetails(props) {
                     <Input
                         // register={register}
                         name="name"
+                        id="name"
                         required
                         placeholder="Alexei Ward"
-                        
                     />
                     {errors.name && <ErrorMessage>Name required</ErrorMessage>}
                 </InputContainer>
@@ -32,6 +32,7 @@ export default function BillingDetails(props) {
                     <Label htmlFor="email">Email Address</Label>
                     <Input
                         name="email"
+                        id="email"
                         type="email"
                         required
                         placeholder="alexei@mail.com"
@@ -42,6 +43,7 @@ export default function BillingDetails(props) {
                     <Label htmlFor="phone">Phone Number</Label>
                     <Input
                         name="phone"
+                        id="phone"
                         required
                         placeholder="+1 202-555-0136"
                         type="number"
