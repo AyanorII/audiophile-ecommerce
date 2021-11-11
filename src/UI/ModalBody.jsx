@@ -12,6 +12,7 @@ const StyledModalBody = styled.div`
     border-radius: 10px;
     background: #fff;
     padding: 1.9375rem 1.75rem;
+    min-width: 300px;
 `;
 
 const Cart = styled.h4`

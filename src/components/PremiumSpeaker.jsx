@@ -11,7 +11,8 @@ const Card = styled.div`
     text-align: center;
     color: #fff;
     background-color: ${(props) => props.theme.palette.primary.main};
-    background-image: url(${require("../assets/home/desktop/pattern-circles.svg").default});
+    background-image: url(${require("../assets/home/desktop/pattern-circles.svg")
+        .default});
     background-size: cover;
     background-position: center;
     padding: 16.8% 7.4%;
@@ -109,26 +110,45 @@ const Content = styled.div`
         grid-row: 1 / 4;
         margin-bottom: 10rem;
 
-        h2, p {
+        h2,
+        p {
             margin-inline: 0;
         }
     }
 `;
 
 export default function PremiumSpeaker() {
-
     return (
         <Card>
-            <Img data-aos="fade-up" src={speakerMobile} alt="zx9 speaker" className="mobile" />
-            <Img data-aos="fade-up" src={speakerTablet} alt="zx9 speaker" className="tablet" />
-            <Img data-aos="fade-up" src={speakerDesktop} alt="zx9 speaker" className="desktop" />
+            <Img
+                data-aos="fade-up"
+                src={speakerMobile}
+                alt="zx9 speaker"
+                className="mobile"
+            />
+            <Img
+                data-aos="fade-up"
+                src={speakerTablet}
+                alt="zx9 speaker"
+                className="tablet"
+            />
+            <Img
+                data-aos="fade-up"
+                src={speakerDesktop}
+                alt="zx9 speaker"
+                className="desktop"
+            />
             <Content data-aos="zoom-out">
                 <Speaker>zx9 speaker</Speaker>
                 <Description>
                     Upgrade to premium speakers that are phenomenally built to
                     deliver truly remarkable sound.
                 </Description>
-                    <LinkButton to='/product/zx9-speaker' background="#000" backgroundHover="#4C4C4C"/>
+                <LinkButton
+                    to="/zx9-speaker"
+                    background="#000"
+                    backgroundHover="#4C4C4C"
+                />
             </Content>
         </Card>
     );

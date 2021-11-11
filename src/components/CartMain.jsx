@@ -18,14 +18,17 @@ const Container = styled.div`
 export default function CartMain(props) {
     return (
         <Container>
-            <ProductsInCart src={props.src} name={props.name} price={props.price} />
+            <ProductsInCart
+                src={props.src}
+                name={props.name}
+                price={props.price}
+            />
             <div className="quantity-button">
                 <QuantityButton
                     quantity={props.quantity}
                     subQuantity={props.subQuantity}
                     addQuantity={props.addQuantity}
                     name={props.name}
-                    test={true}
                 />
             </div>
         </Container>
