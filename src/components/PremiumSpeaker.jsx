@@ -11,8 +11,7 @@ const Card = styled.div`
     text-align: center;
     color: #fff;
     background-color: ${(props) => props.theme.palette.primary.main};
-    background-image: url(${require("../assets/home/desktop/pattern-circles.svg")
-        .default});
+    background-image: url(${require("../assets/home/desktop/pattern-circles.svg").default});
     background-size: cover;
     background-position: center;
     padding: 16.8% 7.4%;
