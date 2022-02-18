@@ -179,7 +179,7 @@ function App() {
                             ))}
                             <Route component={PageNotFound} />
                         </Switch>
-
+                        
                         <Footer />
                     </div>
                 </SCThemeProvider>
