@@ -5,7 +5,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import {
-    HashRouter as Router,
+    BrowserRouter as Router,
     Switch,
     Route,
     Redirect,
@@ -115,7 +115,7 @@ function App() {
     const closeModal = () => setIsModalOpen(false);
 
     return (
-        <Router>
+        <Router basename="/">
             <ThemeProvider theme={theme}>
                 <SCThemeProvider theme={theme}>
                     <div className="App">
@@ -179,7 +179,7 @@ function App() {
                             ))}
                             <Route component={PageNotFound} />
                         </Switch>
-                        
+
                         <Footer />
                     </div>
                 </SCThemeProvider>
