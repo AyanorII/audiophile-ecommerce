@@ -1,4 +1,4 @@
-import { Container, Stack } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { CategoryLink as CategoryLinkType } from "../../lib/types";
 import CategoryLink from "./CategoryLink";
 
@@ -37,15 +37,17 @@ const CATEGORIES: CategoryLinkType[] = [
 const CategoryLinks = (props: Props) => {
   return (
     <Container>
-      <Stack
-        gap={7}
-        flexDirection={{ xs: "column", md: "row" }}
+      <Grid
+        container
+        spacing={{ xs: 7, sm: 3}}
         paddingBottom="2.1875rem"
       >
         {CATEGORIES.map((category) => (
-          <CategoryLink key={category.category} category={category} />
+          <Grid item key={category.category} xs={12} sm={4}>
+            <CategoryLink category={category} />
+          </Grid>
         ))}
-      </Stack>
+      </Grid>
     </Container>
   );
 };
