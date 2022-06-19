@@ -1,21 +1,22 @@
-import { AppBar, Drawer, IconButton, Toolbar } from '@mui/material'
-import React, { useState } from 'react'
-import MenuIcon from '@mui/icons-material/Menu';
-import Logo from '../Logo';
-import CartButton from './CartButton';
+import MenuIcon from "@mui/icons-material/Menu";
+import { AppBar, Drawer, IconButton, Toolbar } from "@mui/material";
+import { useState } from "react";
+import CategoryLinks from "../Category/CategoryLinks";
+import Logo from "../Logo";
+import CartButton from "./CartButton";
 
-type Props = {}
+type Props = {};
 
 const Navbar = (props: Props) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
-  }
+  };
 
   const closeDrawer = () => {
     setDrawerOpen(false);
-  }
+  };
 
   return (
     <>
@@ -27,12 +28,25 @@ const Navbar = (props: Props) => {
           <Logo />
           <CartButton />
         </Toolbar>
+        <Drawer
+          open={drawerOpen}
+          anchor="top"
+          onClose={closeDrawer}
+          sx={{
+            "& .MuiPaper-elevation": {
+              top: "58px",
+            },
+
+            "& .MuiContainer-root": {
+              paddingBottom: "4rem",
+            },
+          }}
+        >
+          <CategoryLinks />
+        </Drawer>
       </AppBar>
-      <Drawer open={drawerOpen} anchor="top" onClose={closeDrawer}>
-        adasdfsafdsf
-      </Drawer>
     </>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
