@@ -31,7 +31,7 @@ const Navbar = (props: Props) => {
     display: { lg: "none" },
 
     "& .MuiPaper-elevation": {
-      top: "58px",
+      top: "96px",
     },
 
     "& .MuiContainer-root": {
@@ -41,7 +41,7 @@ const Navbar = (props: Props) => {
 
   return (
     <>
-      <AppBar sx={{ backgroundColor: "gray.dark" }}>
+      <AppBar sx={{ backgroundColor: "gray.dark", paddingBlock: "1rem", borderBottom: "1px solid #FFFFFF25" }}>
         <Container>
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <IconButton onClick={toggleDrawer} sx={{ display: { lg: "none" } }}>
@@ -87,7 +87,7 @@ const DESKTOP_LINKS = [
 ];
 
 const DesktopLinks = () => {
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 1200px)");
 
   if (!isDesktop) return null;
 

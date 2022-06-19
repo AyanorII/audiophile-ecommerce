@@ -18,9 +18,19 @@ let theme = createTheme({
   },
   components: {
     MuiButton: {
+      defaultProps: {
+        variant: "contained",
+      },
       styleOverrides: {
         root: {
           borderRadius: "0",
+          fontWeight: 600,
+          fontSize: "0.8125rem",
+          padding: "0.75rem 2rem",
+          letterSpacing: "1px",
+          "&:hover": {
+            backgroundColor: "#fbaf85",
+          },
         },
       },
     },
