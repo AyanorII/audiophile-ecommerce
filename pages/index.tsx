@@ -1,12 +1,17 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import Hero from '../components/Home/Hero'
+import { Stack } from "@mui/material";
+import type { NextPage } from "next";
+import CategoryLinks from "../components/Category/CategoryLinks";
+import FeaturedProduct from "../components/Home/FeaturedProduct";
+import Hero from "../components/Home/Hero";
 
 const Home: NextPage = () => {
   return (
-    <Hero />
-  )
-}
+    <Stack gap={{xs: 10, sm: 12, md: 16}}>
+      <Hero />
+      <CategoryLinks />
+      <FeaturedProduct />
+    </Stack>
+  );
+};
 
-export default Home
+export default Home;
