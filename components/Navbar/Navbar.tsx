@@ -34,14 +34,17 @@ const Navbar = (props: Props) => {
       top: "96px",
     },
 
-    "& .MuiContainer-root": {
-      paddingBottom: "4rem",
-    },
   };
 
   return (
     <>
-      <AppBar sx={{ backgroundColor: "gray.dark", paddingBlock: "1rem", borderBottom: "1px solid #FFFFFF25" }}>
+      <AppBar
+        sx={{
+          backgroundColor: "gray.dark",
+          paddingBlock: "1rem",
+          borderBottom: "1px solid #FFFFFF25",
+        }}
+      >
         <Container>
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <IconButton onClick={toggleDrawer} sx={{ display: { lg: "none" } }}>
@@ -56,7 +59,10 @@ const Navbar = (props: Props) => {
           open={drawerOpen}
           anchor="top"
           onClose={closeDrawer}
-          sx={drawerStyles}
+          sx={{
+            ...drawerStyles,
+            "& .MuiContainer-root": { paddingBottom: "9rem" },
+          }}
         >
           <CategoryLinks />
         </Drawer>

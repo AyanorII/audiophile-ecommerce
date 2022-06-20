@@ -1,4 +1,4 @@
-import { Box, Card, Stack, Typography } from "@mui/material";
+import { Box, Card, Stack, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { CategoryLink as CategoryLinkType } from "../../lib/types";
@@ -10,6 +10,8 @@ type Props = {
 const CategoryLink = ({ category }: Props) => {
   const { category: type, href, image } = category;
 
+  const isTablet = useMediaQuery("(min-width: 900px)");
+
   return (
     <Link href={href} passHref>
       <Card elevation={0}
@@ -17,7 +19,7 @@ const CategoryLink = ({ category }: Props) => {
           backgroundColor: "gray.main",
           borderRadius: "8px",
           position: "relative",
-          paddingBlock: "65px 22px",
+          paddingBlock: {xs: "65px 22px", md: "80px 32px"},
           overflow: "visible",
         }}
       >
@@ -26,7 +28,7 @@ const CategoryLink = ({ category }: Props) => {
           alignItems="center"
           textAlign="center"
         >
-          <Box position="absolute" top="-32px">
+          <Box position="absolute" top={isTablet ? "-72px" : "-32px"}>
             <Image
               src={image.src}
               width={image.width}

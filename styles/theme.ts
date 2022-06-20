@@ -3,6 +3,22 @@ import { createTheme, responsiveFontSizes } from "@mui/material";
 let theme = createTheme({
   typography: {
     fontFamily: "Manrope, sans-serif",
+    h1: {
+      textTransform: "uppercase",
+      fontWeight: "bold"
+    },
+    h2: {
+      textTransform: "uppercase",
+      fontWeight: "bold"
+    },
+    h3: {
+      textTransform: "uppercase",
+      fontWeight: "bold"
+    },
+    h4: {
+      textTransform: "uppercase",
+      fontWeight: "bold"
+    }
   },
   palette: {
     primary: {

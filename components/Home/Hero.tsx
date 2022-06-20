@@ -41,9 +41,9 @@ const HeroContent = () => {
       </Typography>
       <Typography
         variant="h2"
+        component="h1"
         letterSpacing="1.3px"
         fontWeight={700}
-        textTransform="uppercase"
         maxWidth={{lg: "50%"}}
         sx={{ color: "#FFF" }}
       >
