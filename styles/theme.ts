@@ -5,20 +5,20 @@ let theme = createTheme({
     fontFamily: "Manrope, sans-serif",
     h1: {
       textTransform: "uppercase",
-      fontWeight: "bold"
+      fontWeight: "bold",
     },
     h2: {
       textTransform: "uppercase",
-      fontWeight: "bold"
+      fontWeight: "bold",
     },
     h3: {
       textTransform: "uppercase",
-      fontWeight: "bold"
+      fontWeight: "bold",
     },
     h4: {
       textTransform: "uppercase",
-      fontWeight: "bold"
-    }
+      fontWeight: "bold",
+    },
   },
   palette: {
     primary: {
@@ -33,6 +33,11 @@ let theme = createTheme({
     },
   },
   components: {
+    MuiPaper: {
+      defaultProps: {
+        elevation: 5,
+      }
+    },
     MuiButton: {
       defaultProps: {
         variant: "contained",
@@ -47,6 +52,15 @@ let theme = createTheme({
           "&:hover": {
             backgroundColor: "#fbaf85",
           },
+        },
+        outlined: {
+          border: "2px solid #101010",
+          color: "#101010",
+          "&:hover": {
+            backgroundColor: "#101010",
+            color: "#FFF",
+            border: "2px solid #101010",
+          }
         },
       },
     },
