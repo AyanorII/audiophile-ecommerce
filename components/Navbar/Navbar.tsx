@@ -4,13 +4,12 @@ import {
   Container,
   Drawer,
   IconButton,
-  Stack,
   Toolbar,
   useMediaQuery,
 } from "@mui/material";
 import { useState } from "react";
 import CategoryLinks from "../Category/CategoryLinks";
-import Link from "../Link";
+import Links from "../Links";
 import Logo from "../Logo";
 import CartButton from "./CartButton";
 
@@ -36,6 +35,8 @@ const Navbar = (props: Props) => {
 
   };
 
+  const isDesktop = useMediaQuery("(min-width: 1200px)");
+
   return (
     <>
       <AppBar
@@ -51,7 +52,7 @@ const Navbar = (props: Props) => {
               <MenuIcon sx={{ color: "#FFF" }} />
             </IconButton>
             <Logo />
-            <DesktopLinks />
+            {isDesktop && <Links />}
             <CartButton />
           </Toolbar>
         </Container>
@@ -72,42 +73,3 @@ const Navbar = (props: Props) => {
 };
 
 export default Navbar;
-
-const DESKTOP_LINKS = [
-  {
-    href: "/",
-    label: "Home",
-  },
-  {
-    href: "/headphones",
-    label: "Headphones",
-  },
-  {
-    href: "/earphones",
-    label: "Earphones",
-  },
-  {
-    href: "/speakers",
-    label: "Speakers",
-  },
-];
-
-const DesktopLinks = () => {
-  const isDesktop = useMediaQuery("(min-width: 1200px)");
-
-  if (!isDesktop) return null;
-
-  return (
-    <Stack flexDirection="row" gap={3}>
-      {DESKTOP_LINKS.map((link) => {
-        const { href, label } = link;
-
-        return (
-          <Link key={href} href={href}>
-            {label}
-          </Link>
-        );
-      })}
-    </Stack>
-  );
-};
