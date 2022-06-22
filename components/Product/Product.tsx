@@ -5,11 +5,11 @@ import { Product as ProductType } from "../../lib/types";
 type Props = {
   product: ProductType;
   children: React.ReactNode;
-  index: number;
+  index?: number;
 };
 
 const Product = ({ product, index, children }: Props) => {
-  const { id, name, price, image, new: isNew, description } = product;
+  const { name, image, new: isNew, description } = product;
 
   const isMobile = useMediaQuery("(max-width: 600px)");
   const isTablet = useMediaQuery("(min-width: 600px) and (max-width: 1200px)");
@@ -25,11 +25,17 @@ const Product = ({ product, index, children }: Props) => {
     src = image.desktop;
   }
 
-  const isIndexEven = index % 2 === 0;
+  const isInProductShowPage = index === undefined;
+  const isIndexEven = !isInProductShowPage && index % 2 === 0;
 
   return (
     <Grid container spacing={isDesktop ? 7 : 4}>
-      <Grid item xs={12} lg={6} order={isIndexEven && isDesktop ? 1 : -1}>
+      <Grid
+        item
+        xs={12}
+        lg={6}
+        order={isInProductShowPage ? -1 : isIndexEven && isDesktop ? -1 : 1}
+      >
         <Card
           sx={{ position: "relative", height: { xs: "352px", lg: "560px" } }}
         >
@@ -42,13 +48,7 @@ const Product = ({ product, index, children }: Props) => {
         </Card>
       </Grid>
       <Grid item xs={12} lg={6}>
-        <Stack
-          gap={3}
-          textAlign={{ xs: "center", lg: "left" }}
-          height="100%"
-          justifyContent="center"
-          alignItems={{ xs: "center", lg: "start" }}
-        >
+        <Stack gap={3} height="100%" justifyContent="center" alignItems="start">
           {isNew && (
             <Typography
               variant="body1"
