@@ -1,5 +1,6 @@
 import { Stack } from "@mui/material";
 import type { NextPage } from "next";
+import AboutSection from "../components/AboutSection";
 import CategoryLinks from "../components/Category/CategoryLinks";
 import FeaturedProducts from "../components/Home/FeaturedProducts";
 import Hero from "../components/Home/Hero";
@@ -10,6 +11,7 @@ const Home: NextPage = () => {
       <Hero />
       <CategoryLinks />
       <FeaturedProducts />
+      <AboutSection />
     </Stack>
   );
 };
