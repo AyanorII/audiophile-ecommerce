@@ -1,20 +1,33 @@
 import { Button, Container, Stack } from "@mui/material";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import AboutSection from "../../components/AboutSection";
 import CategoryHeader from "../../components/Category/CategoryHeader";
 import Product from "../../components/Product/Product";
 import data from "../../data.json";
+import { Product as ProductType } from "../../lib/types";
 
-type Props = {};
+type Props = {
+  headphones: ProductType[];
+};
 
-const Headphones: NextPage = (props: Props) => {
-  const headphones = data.filter((item) => item.category === "headphones");
+export const getStaticProps: GetStaticProps = async () => {
+  const headphones = data
+    .filter((item) => item.category === "headphones")
+    .reverse(); // Reverse to show the latest products first
 
+  return {
+    props: {
+      headphones,
+    },
+  };
+};
+
+const Headphones: NextPage<Props> = ({ headphones }: Props) => {
   return (
     <>
       <CategoryHeader category="headphones" />
       <Container>
-        <Stack gap={{xs: "7.5rem", lg: "10rem"}}>
+        <Stack gap={{ xs: "7.5rem", lg: "10rem" }}>
           {headphones.map((product, index) => {
             const { id, slug } = product;
             const href = `/headphones/${slug}`;
