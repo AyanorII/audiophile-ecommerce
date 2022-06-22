@@ -1,6 +1,5 @@
 import { Button, Container, Stack } from "@mui/material";
 import { NextPage } from "next";
-import React from "react";
 import AboutSection from "../../components/AboutSection";
 import CategoryHeader from "../../components/Category/CategoryHeader";
 import Product from "../../components/Product/Product";
@@ -9,7 +8,9 @@ import data from "../../data.json";
 type Props = {};
 
 const Speakers: NextPage = (props: Props) => {
-  const speakers = data.filter((item) => item.category === "speakers");
+  const speakers = data
+    .filter((item) => item.category === "speakers")
+    .reverse();
 
   return (
     <>
