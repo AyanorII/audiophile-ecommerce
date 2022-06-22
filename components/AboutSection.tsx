@@ -58,7 +58,7 @@ const AboutSection = (props: Props) => {
               Bringing you the{" "}
               <Typography
                 variant="h3"
-                component="h3"
+                component="span"
                 color="primary"
                 display="inline-block"
                 fontWeight="inherit"
