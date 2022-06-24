@@ -1,5 +1,6 @@
 import { Card, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { Product as ProductType } from "../../lib/types";
 
 type Props = {
@@ -28,6 +29,11 @@ const Product = ({ product, index, children }: Props) => {
   const isInProductShowPage = index === undefined;
   const isIndexEven = !isInProductShowPage && index % 2 === 0;
 
+  const router = useRouter();
+  const { pathname } = router;
+
+  const isInShowPage = pathname.includes("[slug]");
+
   return (
     <Grid container spacing={isDesktop ? 7 : 4}>
       <Grid
@@ -44,6 +50,7 @@ const Product = ({ product, index, children }: Props) => {
             layout="fill"
             alt={name}
             objectFit="cover"
+            priority
           />
         </Card>
       </Grid>
@@ -61,7 +68,11 @@ const Product = ({ product, index, children }: Props) => {
               New product
             </Typography>
           )}
-          <Typography variant="h3" component="h2" marginBottom={1}>
+          <Typography
+            variant="h3"
+            component={isInShowPage ? "h1" : "h2"}
+            marginBottom={1}
+          >
             {name}
           </Typography>
           <Typography variant="body1" color="GrayText">
