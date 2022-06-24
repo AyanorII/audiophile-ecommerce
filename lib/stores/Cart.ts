@@ -25,13 +25,12 @@ class Cart {
       : this.items.push({ item: product, quantity: quantity });
 
     this.total += product.price * quantity;
+    this.#setLocalStorage();
   }
 
   removeItem(product: Product) {
     const id = product.id;
-    const productInCart = this.items.find(
-      (item) => item.item.id === id
-    );
+    const productInCart = this.items.find((item) => item.item.id === id);
     const productQuantityInCart = productInCart ? productInCart.quantity : 0;
 
     if (productQuantityInCart === 1) {
@@ -40,6 +39,7 @@ class Cart {
       productInCart!.quantity--;
     }
     this.total -= product.price;
+    this.#setLocalStorage();
   }
 
   resetCart() {
@@ -51,7 +51,20 @@ class Cart {
     return this.items.length === 0;
   }
 
+  setItems(items: { item: Product; quantity: number }[]) {
+    this.items = items;
+    const total = items.reduce(
+      (acc, item) => acc + item.item.price * item.quantity,
+      0
+    );
+    this.total = total;
+  }
+
+  /* ------------------------------- Private -------------------------------- */
+
+  #setLocalStorage() {
+    localStorage.setItem("cart", JSON.stringify(this.items));
+  }
 }
 
-const cart = new Cart();
-export default cart;
+export default Cart;

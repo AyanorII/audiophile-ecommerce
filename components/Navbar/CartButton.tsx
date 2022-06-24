@@ -20,6 +20,8 @@ const CartButton = observer(() => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
+  const cart = useContext(CartContext);
+
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(e.currentTarget);
   };
@@ -28,7 +30,6 @@ const CartButton = observer(() => {
     setAnchorEl(null);
   };
 
-  const cart = useContext(CartContext);
 
   return (
     <>

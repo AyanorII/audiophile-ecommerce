@@ -1,9 +1,12 @@
 import React, { createContext } from "react";
-import cart from "../lib/stores/Cart";
+import Cart from "../lib/stores/Cart";
 
 type Props = {
   children: React.ReactNode;
 };
+
+const cart = new Cart();
+
 export const CartContext = createContext(cart);
 
 const CartProvider = ({ children }: Props) => {
