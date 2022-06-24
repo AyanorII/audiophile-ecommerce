@@ -45,6 +45,7 @@ class Cart {
   resetCart() {
     this.items = [];
     this.total = 0;
+    this.#setLocalStorage();
   }
 
   get isEmpty() {
