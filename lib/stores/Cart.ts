@@ -10,8 +10,8 @@ class Cart {
       items: observable,
       addItem: action,
       removeItem: action,
-      // totalPrice: computed,
-      // allItems: computed,
+      resetCart: action,
+      isEmpty: computed,
     });
   }
 
@@ -21,25 +21,36 @@ class Cart {
     );
 
     productInCart
-      ? productInCart.quantity += quantity
-      : this.items.push({ item: product, quantity: 1 });
+      ? (productInCart.quantity += quantity)
+      : this.items.push({ item: product, quantity: quantity });
 
-    this.total += (product.price * quantity);
+    this.total += product.price * quantity;
   }
 
   removeItem(product: Product) {
     const id = product.id;
-    this.items = this.items.filter((item) => item.item.id !== id);
+    const productInCart = this.items.find(
+      (item) => item.item.id === id
+    );
+    const productQuantityInCart = productInCart ? productInCart.quantity : 0;
+
+    if (productQuantityInCart === 1) {
+      this.items = this.items.filter((item) => item.item.id !== id);
+    } else {
+      productInCart!.quantity--;
+    }
     this.total -= product.price;
   }
 
-  // totalPrice() {
-  //   return this.items.reduce((total, item) => total + item.price, 0);
-  // }
+  resetCart() {
+    this.items = [];
+    this.total = 0;
+  }
 
-  // allItems() {
-  //   return this.items;
-  // }
+  get isEmpty() {
+    return this.items.length === 0;
+  }
+
 }
 
 const cart = new Cart();
