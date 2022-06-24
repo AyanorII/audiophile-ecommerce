@@ -1,6 +1,7 @@
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import {
   Badge,
+  Box,
   Button,
   Container,
   Grid,
@@ -29,7 +30,6 @@ const CartButton = observer(() => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
 
   return (
     <>
@@ -102,53 +102,68 @@ const CartMenu = observer(({ anchorEl, handleClose, open }: MenuProps) => {
             </Button>
           </Stack>
           {/* ---------------------------- Top ------------------------------- */}
-          {cart.items.map((item) => {
-            const { id, name, price, image } = item.item;
-            const { quantity } = item;
+          <Stack gap={1}>
+            {cart.items.map((item) => {
+              const { id, name, price, image } = item.item;
+              const { quantity } = item;
 
-            return (
-              <MenuItem key={id} sx={{ padding: 0 }}>
-                <Grid container alignItems="center" gap={2}>
-                  <Grid item>
-                    <Image
-                      src={image.mobile.slice(1)}
-                      width="64px"
-                      height="64px"
-                      alt={name}
-                      style={{ borderRadius: 8 }}
-                    />
-                  </Grid>
-                  <Grid item>
-                    <Stack justifyContent="space-between" gap={0.5}>
-                      <Typography
-                        variant="body2"
-                        display="block"
-                        fontWeight={600}
+              return (
+                <MenuItem key={id} sx={{ padding: 0 }}>
+                  <Grid
+                    container
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    alignItems="center"
+                    width="100%"
+                  >
+                    <Grid item xs={3}>
+                      <Box
+                        position="relative"
+                        minWidth="64px"
+                        minHeight="64px"
+                        sx={{ "& *": { width: "64px !important" } }}
                       >
-                        {name
-                          .replace(
-                            /(headphones?)|(earphones?)|(speakers?)/i,
-                            " "
-                          )
-                          .toUpperCase()}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="GrayText"
-                        display="block"
-                        fontWeight={600}
-                      >
-                        {getPrice(price)}
-                      </Typography>
-                    </Stack>
+                        <Image
+                          src={image.mobile.slice(1)}
+                          layout="fill"
+                          objectFit="cover"
+                          alt={name}
+                          style={{ borderRadius: 8 }}
+                        />
+                      </Box>
+                    </Grid>
+                    <Grid item xs={4.5}>
+                      <Stack justifyContent="space-between" gap={0.5}>
+                        <Typography
+                          variant="body2"
+                          display="block"
+                          fontWeight={600}
+                        >
+                          {name
+                            .replace(
+                              /(headphones?)|(earphones?)|(speakers?)/i,
+                              " "
+                            )
+                            .toUpperCase()}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="GrayText"
+                          display="block"
+                          fontWeight={600}
+                        >
+                          {getPrice(price)}
+                        </Typography>
+                      </Stack>
+                    </Grid>
+                    <Grid item xs={4.5}>
+                      <QuantityButton product={item.item} quantity={quantity} />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={3.5}>
-                    <QuantityButton product={item.item} quantity={quantity} />
-                  </Grid>
-                </Grid>
-              </MenuItem>
-            );
-          })}
+                </MenuItem>
+              );
+            })}
+          </Stack>
           {/* ---------------------------- Bottom ---------------------------- */}
           {cart.isEmpty && <Typography variant="h6">Empty Cart :(</Typography>}
           {!cart.isEmpty && (
@@ -157,6 +172,7 @@ const CartMenu = observer(({ anchorEl, handleClose, open }: MenuProps) => {
               justifyContent="space-between"
               alignItems="center"
               spacing={2}
+              mt={0.5}
             >
               <Grid item xs={6}>
                 <Typography

@@ -32,8 +32,8 @@ const QuantityButton = observer(({ quantity, product }: Props) => {
 
   const style = {
     backgroundColor: "gray.light",
-    width: "50px",
-    minWidth: "50px !important",
+    width: {xs: "38px", sm: "42px"},
+    minWidth: "38px !important",
     padding: "0.5rem",
     borderColor: "gray.light",
     "&:hover": { backgroundColor: "gray.main", color: "gray.dark" },
@@ -47,7 +47,7 @@ const QuantityButton = observer(({ quantity, product }: Props) => {
         </Button>
         <Box
           sx={{
-            width: "50px",
+            width: "35px",
             display: "grid",
             placeItems: "center",
             backgroundColor: "gray.light",
