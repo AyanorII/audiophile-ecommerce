@@ -1,12 +1,21 @@
-import { Container, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import AboutSection from "../../components/AboutSection";
 import QuantityButton from "../../components/Cart/QuantityButton";
+import CategoryLinks from "../../components/Category/CategoryLinks";
 import GoBack from "../../components/GoBack";
 import FeaturesSection from "../../components/Product/FeaturesSection";
 import Gallery from "../../components/Product/Gallery";
 import InTheBox from "../../components/Product/InTheBox";
 import Product from "../../components/Product/Product";
+import Recommended from "../../components/Product/Recommended";
 import data from "../../data.json";
 import { getPrice } from "../../lib/helpers";
 import { Product as ProductType } from "../../lib/types";
@@ -67,6 +76,10 @@ const Earphone: NextPage<Props> = ({ earphone }: Props) => {
         </Grid>
       </Grid>
       <Gallery product={earphone} />
+      <Recommended product={earphone} />
+      <Box mb={{xs: "7.5rem", lg: "10rem"}}>
+        <CategoryLinks />
+      </Box>
       <AboutSection />
     </Container>
   );
