@@ -7,6 +7,7 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import bottomDesktopImage from "../../public/assets/home/desktop/image-earphones-yx1.jpg";
 import topDesktopImage from "../../public/assets/home/desktop/image-speaker-zx7.jpg";
@@ -21,7 +22,14 @@ type Props = {
 
 const TopProduct = ({ src }: Props) => {
   return (
-    <Paper sx={{ position: "relative", overflow: "hidden", height: "320px" }}>
+    <Paper
+      sx={{ position: "relative", overflow: "hidden", height: "320px" }}
+      component={motion.div}
+      initial={{ opacity: 0, y: -100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.5 }}
+      viewport={{ once: true }}
+    >
       <Image
         src={src}
         layout="fill"
@@ -55,8 +63,19 @@ const BottomProduct = ({ src }: Props) => {
 
   return (
     <Grid container spacing={isDesktop ? 4 : 2}>
-      <Grid item xs={12} md={6}>
-        <Paper sx={{ position: "relative", height: "320px", overflow: "hidden" }}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        component={motion.div}
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <Paper
+          sx={{ position: "relative", height: "320px", overflow: "hidden" }}
+        >
           <Image
             src={src}
             layout="fill"
@@ -67,7 +86,16 @@ const BottomProduct = ({ src }: Props) => {
           />
         </Paper>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        component={motion.div}
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        viewport={{ once: true }}
+      >
         <Paper
           sx={{
             position: "relative",
@@ -76,7 +104,12 @@ const BottomProduct = ({ src }: Props) => {
           }}
         >
           <Container maxWidth="sm" sx={{ height: "100%" }}>
-            <Stack alignItems="start" justifyContent="center" height="100%" paddingLeft={2}>
+            <Stack
+              alignItems="start"
+              justifyContent="center"
+              height="100%"
+              paddingLeft={2}
+            >
               <Typography variant="h4" component="h2" sx={{ color: "gray" }}>
                 YX1 Earphones
               </Typography>

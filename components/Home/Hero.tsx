@@ -1,9 +1,8 @@
 import { Button, Container, Stack, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 import HeroImage from "./HeroImage";
 
-type Props = {};
-
-const Hero = (props: Props) => {
+const Hero = () => {
   return (
     <Container>
       <HeroImage />
@@ -28,8 +27,21 @@ const HeroContent = () => {
       marginTop={{ xs: NAVBAR_HEIGHT.xs, sm: NAVBAR_HEIGHT.sm }}
       textAlign={{ xs: "center", lg: "left" }}
       position="relative"
+      zIndex={2}
       gap={2}
+      component={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 2 }}
     >
+      <Content />
+    </Stack>
+  );
+};
+
+const Content = () => {
+  return (
+    <>
       <Typography
         variant="body2"
         letterSpacing="10px"
@@ -44,8 +56,9 @@ const HeroContent = () => {
         component="h1"
         letterSpacing="1.3px"
         fontWeight={700}
-        maxWidth={{lg: "50%"}}
+        maxWidth={{ lg: "50%" }}
         sx={{ color: "#FFF" }}
+        overflow="hidden"
       >
         XX99 Mark II Headphones
       </Typography>
@@ -65,6 +78,6 @@ const HeroContent = () => {
       >
         See product
       </Button>
-    </Stack>
+    </>
   );
 };

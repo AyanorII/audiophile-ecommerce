@@ -25,8 +25,8 @@ const Layout = ({product}: Props) => {
       <Head title={product.name} description={product.description}/>
       <Container>
         <GoBack />
-        <Product product={product}>
-          <Stack gap={4} alignItems="start">
+        <Product product={product} index={0}>
+          <Stack gap={4} alignItems={{xs: "center", md: "start"}}>
             <Typography variant="body1" fontWeight={700}>
               {getPrice(product.price)}
             </Typography>

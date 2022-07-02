@@ -7,16 +7,18 @@ import {
   Toolbar,
   useMediaQuery,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CategoryLinks from "../Category/CategoryLinks";
 import Links from "../Links";
 import Logo from "../Logo";
 import CartButton from "./CartButton";
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.style.overflowY = drawerOpen ? "hidden" : "auto";
+  }, [drawerOpen]);
 
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
@@ -30,7 +32,7 @@ const Navbar = (props: Props) => {
     display: { lg: "none" },
 
     "& .MuiPaper-elevation": {
-      top: "96px",
+      top: "89px",
     },
   };
 

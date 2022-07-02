@@ -7,12 +7,11 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-type Props = {};
-
-const FeaturedProduct = (props: Props) => {
+const FeaturedProduct = () => {
   const productImageMap = {
     mobile: {
       src: "/assets/home/mobile/image-speaker-zx9.png",
@@ -49,33 +48,59 @@ const FeaturedProduct = (props: Props) => {
 
   const { src, width, height } = productImage;
 
+  const stackStyles = {
+    paddingBlock: { xs: "3.4375rem 5rem", lg: "3.4375rem 0" },
+    backgroundImage: "url('/assets/home/desktop/pattern-circles.svg')",
+    backgroundPosition: {
+      xs: "center top",
+      sm: "center 100%",
+      lg: "-100px 0",
+    },
+    backgroundRepeat: "no-repeat",
+  };
+
+  const variants = {
+    initial: {
+      opacity: 0,
+      y: 100,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
   return (
     <Container>
-      <Card
-        sx={{
-          backgroundColor: "primary.main",
-        }}
-      >
+      <Card sx={{ backgroundColor: "primary.main" }}>
         <Stack
           flexDirection={{ lg: "row" }}
           justifyContent="space-between"
           alignItems="center"
           gap={4}
-          sx={{
-            paddingBlock: { xs: "3.4375rem 5rem", lg: "3.4375rem 0" },
-            backgroundImage: "url('/assets/home/desktop/pattern-circles.svg')",
-            backgroundPosition: {
-              xs: "center top",
-              sm: "center 100%",
-              lg: "-100px 0",
-            },
-            backgroundRepeat: "no-repeat",
-          }}
+          sx={stackStyles}
         >
-          <Box position="relative" left={{lg: "13%"}} bottom={{lg: "-24px"}}>
+          <Box
+            position="relative"
+            left={{ lg: "13%" }}
+            bottom={{ lg: "-24px" }}
+            component={motion.div}
+            variants={variants}
+            initial="initial"
+            whileInView="animate"
+            transition={{ duration: 1.5 }}
+            viewport={{ once: true }}
+          >
             <Image src={src} width={width} height={height} alt="zx9 speaker" />
           </Box>
-          <HeroContent />
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1.5, delay: 1 }}
+            viewport={{ once: true }}
+          >
+            <HeroContent />
+          </motion.div>
         </Stack>
       </Card>
     </Container>

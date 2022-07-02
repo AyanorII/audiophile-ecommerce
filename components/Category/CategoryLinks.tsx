@@ -2,10 +2,8 @@ import { Container, Grid, useMediaQuery } from "@mui/material";
 import { CategoryLink as CategoryLinkType } from "../../lib/types";
 import CategoryLink from "./CategoryLink";
 
-type Props = {};
 
-
-const CategoryLinks = (props: Props) => {
+const CategoryLinks = () => {
   const isTablet = useMediaQuery("(min-width: 900px)");
 
   const CATEGORIES: CategoryLinkType[] = [
@@ -41,10 +39,10 @@ const CategoryLinks = (props: Props) => {
     <Container>
       <Grid
         container
-        spacing={{ xs: 7, sm: 3}}
+        columnSpacing={{sm:3}}
       >
         {CATEGORIES.map((category) => (
-          <Grid item key={category.category} xs={12} sm={4}>
+          <Grid item key={category.category} xs={12} sm={4} minHeight="200px">
             <CategoryLink category={category} />
           </Grid>
         ))}

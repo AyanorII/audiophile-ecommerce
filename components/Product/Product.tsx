@@ -1,4 +1,5 @@
 import { Card, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Product as ProductType } from "../../lib/types";
@@ -6,7 +7,7 @@ import { Product as ProductType } from "../../lib/types";
 type Props = {
   product: ProductType;
   children: React.ReactNode;
-  index?: number;
+  index: number;
 };
 
 const Product = ({ product, index, children }: Props) => {
@@ -26,8 +27,7 @@ const Product = ({ product, index, children }: Props) => {
     src = image.tablet;
   }
 
-  const isInProductShowPage = index === undefined;
-  const isIndexEven = !isInProductShowPage && index % 2 === 0;
+  const isIndexEven = index % 2 === 0;
 
   const router = useRouter();
   const { pathname } = router;
@@ -43,7 +43,16 @@ const Product = ({ product, index, children }: Props) => {
 
   return (
     <Grid container spacing={isDesktop ? 7 : 4}>
-      <Grid item xs={12} md={6}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        component={motion.div}
+        initial={{ opacity: 0, x: isIndexEven ? -100 : 100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.5 }}
+        viewport={{ once: true }}
+      >
         <Card
           sx={{ position: "relative", height: { xs: "352px", md: "560px" } }}
         >
@@ -56,7 +65,17 @@ const Product = ({ product, index, children }: Props) => {
           />
         </Card>
       </Grid>
-      <Grid item xs={12} md={6} order={getGridOrder()}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        order={getGridOrder()}
+        component={motion.div}
+        initial={{ opacity: 0, x: isIndexEven ? 100 : -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.5 }}
+        viewport={{ once: true }}
+      >
         <Stack
           gap={3}
           height="100%"
