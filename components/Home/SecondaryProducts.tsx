@@ -109,6 +109,7 @@ const BottomProduct = ({ src }: Props) => {
               justifyContent="center"
               height="100%"
               paddingLeft={2}
+              gap={2}
             >
               <Typography variant="h4" component="h2" sx={{ color: "gray" }}>
                 YX1 Earphones
