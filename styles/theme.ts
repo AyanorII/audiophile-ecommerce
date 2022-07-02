@@ -36,7 +36,7 @@ let theme = createTheme({
     MuiPaper: {
       defaultProps: {
         elevation: 5,
-      }
+      },
     },
     MuiButton: {
       defaultProps: {
@@ -60,7 +60,66 @@ let theme = createTheme({
             backgroundColor: "#101010",
             color: "#FFF",
             border: "2px solid #101010",
-          }
+          },
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          "& .MuiInputLabel-root": {
+            borderRadius: 8,
+            top: "-2rem",
+            transform: "unset",
+            fontWeight: 600,
+            color: "#000",
+            "&.Mui-focused": {
+              color: "#000",
+            },
+          },
+          "& legend": {
+            display: "none",
+          },
+          "&  .MuiOutlinedInput-input::placeholder": {
+            opacity: 1,
+            visibility: "visible",
+            display: "none",
+            color: "red",
+          },
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          border: "2px solid #CFCFCF",
+          padding: "0.75rem 1rem",
+          borderRadius: 7,
+          transition: "all 0.2s",
+          fontWeight: 600,
+          "&:hover, &.Mui-focused": {
+            borderColor: "#D87D4A",
+          },
+          "&.Mui-error": {
+            borderColor: "#CD2C2C",
+          },
+        },
+      },
+    },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          border: "2px solid #CFCFCF",
+          padding: "0.75rem 1rem",
+          borderRadius: 7,
+          transition: "all 0.2s",
+          fontWeight: 600,
+          "&:hover, &.Mui-focused": {
+            borderColor: "#D87D4A",
+          },
+          "&.Mui-error": {
+            borderColor: "#CD2C2C",
+          },
         },
       },
     },
