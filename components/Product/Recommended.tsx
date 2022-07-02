@@ -13,7 +13,7 @@ const Recommended = ({ product }: Props) => {
   const isTablet = useMediaQuery("(min-width: 600px)");
 
   return (
-    <Stack textAlign="center" mb={{xs: "10rem", lg: "14.5rem"}}>
+    <Stack textAlign="center" mb={{ xs: "10rem", lg: "14.5rem" }}>
       <Typography
         variant="h4"
         component="h2"
@@ -26,9 +26,10 @@ const Recommended = ({ product }: Props) => {
         {others.map((item) => {
           const { slug, name, image } = item;
 
-          // e.g "xx99-mark-one-headphones" => "headphones"
-          const category = slug.split("-")[-1];
-          const href = `/${category}/${slug}`;
+          const category = slug.match(/\w*$/)![0];
+          const href = `/${
+            category.endsWith("s") ? category : `${category}s`
+          }/${slug}`;
 
           return (
             <Grid item xs={12} sm={4} key={slug}>

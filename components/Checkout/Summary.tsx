@@ -5,8 +5,6 @@ import { useContext } from "react";
 import { getPrice, getShortName } from "../../lib/helpers";
 import { CartContext } from "../CartContext";
 
-type Props = {};
-
 const Summary = observer(() => {
   const store = useContext(CartContext);
   const { items, total } = store;
@@ -54,7 +52,7 @@ type ItemProps = {
   quantity: number;
 };
 
-const Item = ({ src, name, price, quantity }: ItemProps) => {
+export const Item = ({ src, name, price, quantity }: ItemProps) => {
   return (
     <Grid container alignItems="center" columnSpacing={2}>
       {/* ------------------------ Image ------------------------- */}

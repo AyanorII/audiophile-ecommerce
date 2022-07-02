@@ -14,10 +14,15 @@ const InTheBox = ({ product }: Props) => {
       justifyContent="space-between"
       width="100%"
     >
-      <Typography variant="h4" component="h2" textTransform="uppercase">
+      <Typography
+        variant="h4"
+        component="h2"
+        textTransform="uppercase"
+        marginBottom={1}
+      >
         In the box
       </Typography>
-      <List sx={{paddingTop: {sm: 0}}}>
+      <List sx={{ paddingTop: { sm: 0 } }}>
         {includes.map((item, index) => {
           const { quantity, item: includeItem } = item;
 

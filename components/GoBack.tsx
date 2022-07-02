@@ -1,9 +1,7 @@
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
 
-type Props = {};
-
-const GoBack = (props: Props) => {
+const GoBack = () => {
   const router = useRouter();
 
   return (
@@ -11,7 +9,7 @@ const GoBack = (props: Props) => {
       variant="text"
       onClick={() => router.back()}
       sx={{
-        marginTop: { xs: "6.625rem", md: "7.6875rem", lg: "11rem" },
+        marginTop: { xs: "6.625rem", md: "7.5rem" },
         color: "GrayText",
         textTransform: "capitalize",
         fontWeight: "medium",
