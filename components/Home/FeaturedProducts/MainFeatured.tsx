@@ -94,7 +94,7 @@ const HeroContent = () => {
         textAlign: { xs: "center", lg: "left" },
       }}
     >
-      <Typography variant="h3" color="#FFFFFF">
+      <Typography variant="h3" component="h2" color="#FFFFFF">
         zx9 {<br />} speaker
       </Typography>
       <Typography

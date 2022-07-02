@@ -34,6 +34,7 @@ const CartButton = observer(() => {
   return (
     <>
       <button
+        aria-label="cart button"
         style={{ border: "none", background: "transparent", cursor: "pointer" }}
         onClick={handleClick}
       >

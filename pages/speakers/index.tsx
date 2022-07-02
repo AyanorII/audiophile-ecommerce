@@ -2,6 +2,7 @@ import { Button, Container, Stack } from "@mui/material";
 import { NextPage } from "next";
 import AboutSection from "../../components/AboutSection";
 import CategoryHeader from "../../components/Category/CategoryHeader";
+import Head from "../../components/Head";
 import Product from "../../components/Product/Product";
 import data from "../../data.json";
 
@@ -14,6 +15,7 @@ const Speakers: NextPage = (props: Props) => {
 
   return (
     <>
+      <Head title="Speakers | Audiophle" />
       <CategoryHeader category="speakers" />
       <Container>
         <Stack gap={{ xs: "7.5rem", lg: "10rem" }}>

@@ -32,7 +32,6 @@ const Navbar = (props: Props) => {
     "& .MuiPaper-elevation": {
       top: "96px",
     },
-
   };
 
   const isDesktop = useMediaQuery("(min-width: 1200px)");
@@ -48,7 +47,11 @@ const Navbar = (props: Props) => {
       >
         <Container>
           <Toolbar sx={{ justifyContent: "space-between" }}>
-            <IconButton onClick={toggleDrawer} sx={{ display: { lg: "none" } }}>
+            <IconButton
+              onClick={toggleDrawer}
+              sx={{ display: { lg: "none" } }}
+              aria-label="menu button"
+            >
               <MenuIcon sx={{ color: "#FFF" }} />
             </IconButton>
             <Logo />

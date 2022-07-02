@@ -13,6 +13,7 @@ import CheckoutForm from "../components/Checkout/CheckoutForm";
 import PurchaseModal from "../components/Checkout/PurchaseModal";
 import Summary from "../components/Checkout/Summary";
 import GoBack from "../components/GoBack";
+import Head from "../components/Head";
 import { Checkout as CheckoutType } from "../lib/types";
 
 const Checkout: NextPage = () => {
@@ -44,6 +45,7 @@ const Checkout: NextPage = () => {
 
   return (
     <>
+      <Head title="Checkout | Audiophile" />
       <PurchaseModal isOpen={open} onClose={handleClose} />
       <Box
         sx={{ bgcolor: "gray.main" }}

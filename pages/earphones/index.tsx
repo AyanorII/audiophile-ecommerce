@@ -1,18 +1,17 @@
-import { Button, Container, Stack } from '@mui/material';
-import { NextPage } from 'next';
-import React from 'react'
-import AboutSection from '../../components/AboutSection';
-import CategoryHeader from '../../components/Category/CategoryHeader';
-import Product from '../../components/Product/Product';
+import { Button, Container, Stack } from "@mui/material";
+import { NextPage } from "next";
+import AboutSection from "../../components/AboutSection";
+import CategoryHeader from "../../components/Category/CategoryHeader";
+  import Head from "../../components/Head";
+import Product from "../../components/Product/Product";
 import data from "../../data.json";
 
-type Props = {}
-
-const Earphones: NextPage = (props: Props) => {
+const Earphones: NextPage = () => {
   const earphones = data.filter((item) => item.category === "earphones");
 
   return (
     <>
+      <Head title="Earphones | Audiophle" />
       <CategoryHeader category="earphones" />
       <Container>
         <Stack gap={{ xs: "7.5rem", lg: "10rem" }}>
@@ -33,6 +32,6 @@ const Earphones: NextPage = (props: Props) => {
       </Container>
     </>
   );
-}
+};
 
-export default Earphones
+export default Earphones;

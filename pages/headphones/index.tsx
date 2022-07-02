@@ -5,6 +5,7 @@ import CategoryHeader from "../../components/Category/CategoryHeader";
 import Product from "../../components/Product/Product";
 import data from "../../data.json";
 import { Product as ProductType } from "../../lib/types";
+import Head from "../../components/Head";
 
 type Props = {
   headphones: ProductType[];
@@ -25,6 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
 const Headphones: NextPage<Props> = ({ headphones }: Props) => {
   return (
     <>
+      <Head title="Headphones | Audiophle" />
       <CategoryHeader category="headphones" />
       <Container>
         <Stack gap={{ xs: "7.5rem", lg: "10rem" }}>

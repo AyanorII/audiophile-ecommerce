@@ -90,6 +90,7 @@ const SocialMediaLinks = () => {
           }}
         />
       ),
+      label: "Facebook",
     },
     {
       href: "https://www.instagram.com/ayanori.toyoda/",
@@ -103,6 +104,7 @@ const SocialMediaLinks = () => {
           }}
         />
       ),
+      label: "Instagram",
     },
     {
       href: "https://github.com/AyanorII",
@@ -116,6 +118,7 @@ const SocialMediaLinks = () => {
           }}
         />
       ),
+      label: "GitHub",
     },
   ];
 
@@ -128,11 +131,11 @@ const SocialMediaLinks = () => {
       height="100%"
     >
       {SOCIAL_MEDIA.map((link) => {
-        const { href, icon } = link;
+        const { href, icon, label } = link;
 
         return (
           <Link key={href} href={href}>
-            <a>{icon}</a>
+            <a aria-label={label}>{icon}</a>
           </Link>
         );
       })}

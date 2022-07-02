@@ -22,7 +22,7 @@ const Link = ({ href, children }: Props) => {
 
   return (
     <NextLink href={href}>
-      <MuiLink sx={linkStyles}>{children}</MuiLink>
+      <MuiLink sx={linkStyles} href={href}>{children}</MuiLink>
     </NextLink>
   );
 };
