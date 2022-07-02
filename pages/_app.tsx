@@ -1,5 +1,6 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import type { AppProps } from "next/app";
+import Script from "next/script";
 import { useContext, useEffect } from "react";
 import CartProvider, { CartContext } from "../components/CartContext";
 import Footer from "../components/Footer/Footer";
@@ -19,14 +20,31 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CartProvider>
-        <CssBaseline />
-        <Navbar />
-        <Component {...pageProps} />
-        <Footer />
-      </CartProvider>
-    </ThemeProvider>
+    <>
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-EPH28T6HSZ`}
+      />
+
+      <Script strategy="lazyOnload" id="ga">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-EPH28T6HSZ', {
+          page_path: window.location.pathname,
+          });
+        `}
+      </Script>
+      <ThemeProvider theme={theme}>
+        <CartProvider>
+          <CssBaseline />
+          <Navbar />
+          <Component {...pageProps} />
+          <Footer />
+        </CartProvider>
+      </ThemeProvider>
+    </>
   );
 }
 
