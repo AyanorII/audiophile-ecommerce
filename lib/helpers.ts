@@ -4,3 +4,9 @@ export const getPrice = (price: number) => {
     currency: "USD",
   }).format(price);
 };
+
+export const getShortName = (name: string) => {
+  return name
+    .replace(/(headphones?)|(earphones?)|(speakers?)/i, " ")
+    .toUpperCase();
+};

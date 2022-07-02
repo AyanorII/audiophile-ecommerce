@@ -13,7 +13,7 @@ import {
 import { observer } from "mobx-react-lite";
 import Image from "next/image";
 import { useContext, useState } from "react";
-import { getPrice } from "../../lib/helpers";
+import { getPrice, getShortName } from "../../lib/helpers";
 import QuantityButton from "../Cart/QuantityButton";
 import { CartContext } from "../CartContext";
 
@@ -139,12 +139,7 @@ const CartMenu = observer(({ anchorEl, handleClose, open }: MenuProps) => {
                           display="block"
                           fontWeight={600}
                         >
-                          {name
-                            .replace(
-                              /(headphones?)|(earphones?)|(speakers?)/i,
-                              " "
-                            )
-                            .toUpperCase()}
+                          {getShortName(name)}
                         </Typography>
                         <Typography
                           variant="body2"
@@ -165,36 +160,44 @@ const CartMenu = observer(({ anchorEl, handleClose, open }: MenuProps) => {
             })}
           </Stack>
           {/* ---------------------------- Bottom ---------------------------- */}
-          {cart.isEmpty && <Typography variant="h6">Empty Cart :(</Typography>}
-          {!cart.isEmpty && (
-            <Grid
-              container
-              justifyContent="space-between"
-              alignItems="center"
-              spacing={2}
-              mt={0.5}
-            >
-              <Grid item xs={6}>
-                <Typography
-                  variant="body2"
-                  color="GrayText"
-                  textTransform="uppercase"
-                >
-                  Total
-                </Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography variant="body1" fontWeight={600} textAlign="right">
-                  {getPrice(cart.total)}
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Button variant="contained" href="/checkout" fullWidth>
-                  checkout
-                </Button>
-              </Grid>
-            </Grid>
+          {cart.isEmpty && (
+            <Typography variant="body1" color="GrayText" mt={2}>
+              Empty Cart
+            </Typography>
           )}
+
+          <Grid
+            container
+            justifyContent="space-between"
+            alignItems="center"
+            spacing={2}
+            mt={0.5}
+          >
+            <Grid item xs={6}>
+              <Typography
+                variant="body2"
+                color="GrayText"
+                textTransform="uppercase"
+              >
+                Total
+              </Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="body1" fontWeight={600} textAlign="right">
+                {getPrice(cart.total)}
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                variant="contained"
+                href="/checkout"
+                fullWidth
+                disabled={cart.isEmpty}
+              >
+                checkout
+              </Button>
+            </Grid>
+          </Grid>
           {/* ---------------------------- Bottom ---------------------------- */}
         </>
       </Container>
