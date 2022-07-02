@@ -7,11 +7,13 @@ import {
   Typography,
 } from "@mui/material";
 import { NextPage } from "next";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import CheckoutForm from "../components/Checkout/CheckoutForm";
+import PurchaseModal from "../components/Checkout/PurchaseModal";
 import Summary from "../components/Checkout/Summary";
 import GoBack from "../components/GoBack";
-import { Checkout } from "../lib/types";
+import { Checkout as CheckoutType } from "../lib/types";
 
 const Checkout: NextPage = () => {
   const {
@@ -30,48 +32,56 @@ const Checkout: NextPage = () => {
       paymentMethod: "eMoney",
       eMoneyNumber: "",
       eMoneyPin: "",
-    } as Checkout,
+    } as CheckoutType,
   });
 
-  const onSubmit = (data: any) => console.log(data);
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
+
+  const onSubmit = () => handleOpen();
 
   return (
-    <Box
-      sx={{ bgcolor: "gray.main" }}
-      marginBottom={{ xs: "-7.5rem", lg: "-12.5rem" }}
-      paddingBottom={{ xs: "7.5rem", lg: "12.5rem" }}
-    >
-      <Container>
-        <GoBack />
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container spacing={3} position="relative">
-            <Grid item xs={12} md={8}>
-              <Card
-                elevation={0}
-                sx={{ borderRadius: 3, bgcolor: "background.paper" }}
-              >
-                <CardContent sx={{ padding: { xs: 3, sm: 5 } }}>
-                  <Typography
-                    variant="h5"
-                    fontWeight={600}
-                    textTransform="uppercase"
-                    mb={{ xs: "2rem", sm: "2.625rem" }}
-                  >
-                    Checkout
-                  </Typography>
-                  <CheckoutForm control={control} errors={errors} />
-                </CardContent>
-              </Card>
+    <>
+      <PurchaseModal isOpen={open} onClose={handleClose} />
+      <Box
+        sx={{ bgcolor: "gray.main" }}
+        marginBottom={{ xs: "-7.5rem", lg: "-12.5rem" }}
+        paddingBottom={{ xs: "7.5rem", lg: "12.5rem" }}
+      >
+        <Container>
+          <GoBack />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Grid container spacing={3} position="relative">
+              <Grid item xs={12} md={8}>
+                <Card
+                  elevation={0}
+                  sx={{ borderRadius: 3, bgcolor: "background.paper" }}
+                >
+                  <CardContent sx={{ padding: { xs: 3, sm: 5 } }}>
+                    <Typography
+                      variant="h5"
+                      fontWeight={600}
+                      textTransform="uppercase"
+                      mb={{ xs: "2rem", sm: "2.625rem" }}
+                    >
+                      Checkout
+                    </Typography>
+                    <CheckoutForm control={control} errors={errors} />
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <Box position="sticky" top="150px">
+                  <Summary />
+                </Box>
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <Box position="sticky" top="150px">
-                <Summary />
-              </Box>
-            </Grid>
-          </Grid>
-        </form>
-      </Container>
-    </Box>
+          </form>
+        </Container>
+      </Box>
+    </>
   );
 };
 
