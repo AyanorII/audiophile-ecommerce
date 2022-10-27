@@ -2,7 +2,7 @@
 # Audiophile E-commerce
 
 Multi-page e-commerce website for a fictional audio related company. Built with Next.js and Material UI.
-You can check the original project idea from [Frontend Mentor](https://www.frontendmentor.io/challenges/kanban-task-management-web-app-wgQLt-HlbB).
+You can check the original project idea from [Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx).
 
 Link to the **[project](https://audiophile-ecommerce-ayanori.vercel.app/)**
 
