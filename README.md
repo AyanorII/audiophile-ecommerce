@@ -8,7 +8,7 @@ Link to the **[project](https://audiophile-ecommerce-ayanori.vercel.app/)**
 
 ## Tech Stack
 
-**Client:** Next.js, Material UI
+**Client:** TypeScript, Next.js, Material UI
 
 
 
