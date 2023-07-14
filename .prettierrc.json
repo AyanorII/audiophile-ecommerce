@@ -9,7 +9,7 @@
 	"quoteProps": "as-needed",
 	"requirePragma": false,
 	"semi": true,
-  "arrowParens": "avoid",
+  "arrowParens": "always",
 	"singleQuote": false,
 	"tabWidth": 2,
 	"trailingComma": "es5",
