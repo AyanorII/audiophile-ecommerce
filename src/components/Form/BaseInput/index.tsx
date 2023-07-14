@@ -9,7 +9,8 @@ type Props = {
 	error?: boolean;
 	htmlFor?: string;
 	errorMessage?: string;
-	focused: boolean;
+	focused?: boolean;
+	className?: string;
 };
 
 const BaseInput = ({
@@ -19,18 +20,20 @@ const BaseInput = ({
 	errorMessage,
 	focused,
 	htmlFor,
+	className,
 }: Props) => {
 	const BASE_CLASS_NAME =
-		"border-[1px] py-4 px-4 text-black text-sm font-bold rounded-lg transition-colors ease-in-out";
+		"border-[1px] py-4 px-4 text-black text-sm font-bold rounded-lg transition-colors ease-in-out hover:border-primary-main";
 
 	const FOCUSED_CLASS_NAME = "border-primary-main";
 
 	const ERROR_CLASS_NAME = "border-error border-2 px-[15px] py-[15px]";
 
-	const className = twMerge([
+	const classNames = twMerge([
 		BASE_CLASS_NAME,
 		focused && FOCUSED_CLASS_NAME,
 		error && ERROR_CLASS_NAME,
+		className,
 	]);
 
 	return (
@@ -43,7 +46,7 @@ const BaseInput = ({
 					</ErrorMessage>
 				)}
 			</div>
-			<div className={className}>{children}</div>
+			<div className={classNames}>{children}</div>
 		</div>
 	);
 };
