@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { CartButton } from "@/Cart";
 import { CategoryCardList } from "@/Category/components";
 import { Logo, Overlay } from "@/components";
+import { Container } from "@/components/Container";
 import { useEventListener, useOpenable, useScrollPosition } from "@/lib/hooks";
 import { twMerge } from "tailwind-merge";
 
@@ -40,19 +41,21 @@ export const Navbar = () => {
 				])}
 			>
 				<div className="relative z-[9999] bg-zinc-900">
-					<div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-6 py-8 md:px-10">
-						<NavMenuButton className="p-2 lg:hidden" onClick={handleToggle} />
-						<div className="flex items-center md:ml-11 md:grow lg:ml-0 lg:grow-0">
-							<Link href="/" className="inline-block">
-								<Logo />
-							</Link>
+					<Container>
+						<div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between py-8">
+							<NavMenuButton className="p-2 lg:hidden" onClick={handleToggle} />
+							<div className="flex items-center md:ml-6 md:grow lg:ml-0 lg:grow-0">
+								<Link href="/" className="inline-block">
+									<Logo />
+								</Link>
+							</div>
+							<CartButton className="order-2 p-2" />
+							<LinkList
+								linkItemProps={{ className: "text-white" }}
+								className="hidden w-full items-center justify-between md:w-auto lg:flex"
+							/>
 						</div>
-						<CartButton className="order-2 p-2" />
-						<LinkList
-							linkItemProps={{ className: "text-white" }}
-							className="hidden w-full items-center justify-between md:w-auto lg:flex"
-						/>
-					</div>
+					</Container>
 				</div>
 				<CategoryCardList
 					className={twMerge([
