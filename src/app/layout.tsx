@@ -21,7 +21,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={twMerge([manrope.className, "overflow-x-hidden"])}>
 				<Navbar />
-				<div className="mt-[100px]">{children}</div>
+				{children}
 			</body>
 		</html>
 	);
