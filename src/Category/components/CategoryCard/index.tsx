@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Category } from "@/Category/types";
-import { Button } from "@/components";
+import { Button, Card } from "@/components";
 import { twJoin } from "tailwind-merge";
 
 type Props = Category;
@@ -10,10 +10,10 @@ type Props = Category;
 export const CategoryCard = ({ type, image, href }: Props) => {
 	return (
 		<Link href={href} className="w-full">
-			<div
+			<Card
 				className={twJoin([
-					"relative flex cursor-pointer flex-col items-center gap-3 rounded-lg ",
-					"bg-gray-100 px-6 pt-20 transition-all duration-300 hover:shadow-md md:pt-28",
+					"relative flex cursor-pointer flex-col items-center gap-3",
+					"bg-gray-100 px-6 pt-20 md:pt-28",
 				])}
 			>
 				<Image
@@ -41,7 +41,7 @@ export const CategoryCard = ({ type, image, href }: Props) => {
 						/>
 					</Button>
 				</div>
-			</div>
+			</Card>
 		</Link>
 	);
 };
