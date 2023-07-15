@@ -1,2 +1,2 @@
 export * from "./useOpenable";
-export * from "./useWindowResizeListener";
+export * from "./useEventListener";
