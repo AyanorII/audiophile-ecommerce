@@ -1,7 +1,7 @@
 import { LinkProps } from "next/link";
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
-export type ButtonVariant = "contained" | "outlined" | "text";
+export type ButtonVariant = "contained" | "outlined" | "text" | "dark";
 
 export type CommonProps = {
 	variant?: ButtonVariant;

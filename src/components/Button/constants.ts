@@ -9,3 +9,5 @@ export const OUTLINED_CLASS_NAME =
 
 export const TEXT_CLASS_NAME =
 	"bg-transparent text-gray-400 hover:text-primary-main";
+
+export const DARK_CLASS_NAME = "bg-black text-white hover:bg-gray-900";
