@@ -7,7 +7,7 @@ import { FeaturedProductMainImage } from "./FeaturedProductMainImage";
 
 export const FeaturedProductMain = () => {
 	return (
-		<Card className="relative overflow-hidden bg-primary-main py-14 lg:pb-12">
+		<Card className="relative bg-primary-main py-14 lg:pb-12">
 			<Container className="flex h-full flex-col items-center justify-center gap-10 lg:max-w-[77%] lg:flex-row xl:gap-16 2xl:gap-24">
 				<Image
 					src="/images/home/desktop/pattern-circles.svg"
