@@ -1,6 +1,7 @@
 import { CategoryCardList } from "@/Category/components";
 import { Container } from "@/components";
 import { Hero } from "@/Home/components";
+import { FeaturedProducts } from "@/Home/components/FeaturedProducts";
 
 export default function Home() {
 	return (
@@ -8,6 +9,7 @@ export default function Home() {
 			<Hero />
 			<Container>
 				<CategoryCardList className="mt-10 sm:mt-12 md:mt-32 lg:mt-40" />
+				<FeaturedProducts />
 			</Container>
 		</main>
 	);
