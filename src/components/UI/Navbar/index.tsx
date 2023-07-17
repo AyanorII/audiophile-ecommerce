@@ -5,15 +5,16 @@ import { useEffect } from "react";
 
 import { CartButton } from "@/Cart";
 import { CategoryCardList } from "@/Category/components";
-import { Logo, Overlay } from "@/components";
-import { Container } from "@/components/Container";
 import { useEventListener, useOpenable, useScrollPosition } from "@/lib/hooks";
 import { twMerge } from "tailwind-merge";
 
-import { DESKTOP_BREAKPOINT, SCROLL_THRESHOLD } from "../constants";
+import { DESKTOP_BREAKPOINT, SCROLL_THRESHOLD } from "./constants";
 
-import { LinkList } from "../LinkList";
-import { NavMenuButton } from "../NavMenuButton";
+import { Container } from "../Container";
+import { Logo } from "../Logo";
+import { Overlay } from "../Overlay";
+import { LinkList } from "./LinkList";
+import { NavMenuButton } from "./NavMenuButton";
 
 export const Navbar = () => {
 	const { isOpen, handleClose, handleToggle } = useOpenable();

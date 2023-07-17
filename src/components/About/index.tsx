@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-import { Card } from "../Card";
+import { Card } from "../UI";
 
 export const About = () => {
 	const imageClassName =

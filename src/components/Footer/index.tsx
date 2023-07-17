@@ -1,8 +1,7 @@
 import { twMerge } from "tailwind-merge";
 
-import { Container } from "../Container";
-import { Logo } from "../Logo";
-import { LinkList } from "../Nav/LinkList";
+import { Container, Logo } from "../UI";
+import { LinkList } from "../UI/Navbar/LinkList";
 import { CopyrightDisclaimer } from "./CopyrightDisclaimer";
 import { SocialMediaLinks } from "./SocialMediaLinks";
 

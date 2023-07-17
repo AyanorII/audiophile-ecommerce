@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 
-import { Navbar } from "@/components/Nav/Navbar";
+import { Navbar } from "@/components/UI/Navbar";
 import { twMerge } from "tailwind-merge";
 
 const manrope = Manrope({ subsets: ["latin"] });

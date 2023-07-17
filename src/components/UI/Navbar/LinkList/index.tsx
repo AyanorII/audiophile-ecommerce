@@ -1,4 +1,4 @@
-import { Link } from "@/components/Link";
+import { Link } from "@/components/UI/Link";
 import { twMerge } from "tailwind-merge";
 
 import { NAV_LINKS } from "./constants";
