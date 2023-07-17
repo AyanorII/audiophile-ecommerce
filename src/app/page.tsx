@@ -1,7 +1,5 @@
 import { CategoryCardList } from "@/Category/components";
-import { Container } from "@/components";
-import { About } from "@/components/About";
-import { Footer } from "@/components/Footer";
+import { About, Container, Footer } from "@/components";
 import { Hero } from "@/Home/components";
 import { FeaturedProducts } from "@/Home/components/FeaturedProducts";
 
