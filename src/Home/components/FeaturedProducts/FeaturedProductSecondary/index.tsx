@@ -9,7 +9,7 @@ export const FeaturedProductSecondary = () => {
 		<>
 			<Card
 				className={twMerge([
-					"relative flex h-[320px] items-center lg:h-[527px]",
+					"relative flex h-[320px] items-center",
 					imageClassName,
 				])}
 			>
