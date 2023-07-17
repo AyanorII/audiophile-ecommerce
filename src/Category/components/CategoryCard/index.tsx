@@ -13,7 +13,7 @@ export const CategoryCard = ({ type, image, href }: Props) => {
 			<Card
 				className={twJoin([
 					"relative flex cursor-pointer flex-col items-center gap-3",
-					"bg-gray-100 px-6 pt-20 md:pt-28",
+					"bg-gray-100 px-6 pt-20 md:pt-28 overflow-visible",
 				])}
 			>
 				<Image
