@@ -21,7 +21,7 @@ export const Footer = () => {
 					<Logo className="col-span-full lg:col-start-1 lg:col-end-2" />
 					<LinkList
 						linkItemProps={{ className: "text-white" }}
-						className="col-span-full lg:col-start-2 lg:col-end-3"
+						className="col-span-full lg:col-start-2 lg:col-end-3 lg:justify-self-end"
 					/>
 					<p className="col-span-full leading-relaxed text-gray-400 md:mb-12 lg:col-start-1 lg:col-end-2">
 						Audiophile is an all in one stop to fulfill your audio needs.
