@@ -6,7 +6,7 @@ import { NavLink } from "./types";
 const CATEGORIES_LINKS: NavLink[] = Object.values(CategoryType).map(
 	(category) => ({
 		label: CategoryType[capitalize(category) as keyof typeof CategoryType],
-		path: `/${category.toLowerCase()}`,
+		path: `/categories/${category.toLowerCase()}`,
 	})
 );
 
