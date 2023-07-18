@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 
+import { Footer } from "@/components";
 import { Navbar } from "@/components/UI/Navbar";
 import { twMerge } from "tailwind-merge";
 
@@ -18,10 +19,16 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
-			<body className={twMerge([manrope.className, "overflow-x-hidden"])}>
+		<html lang="en" className="h-full">
+			<body
+				className={twMerge([
+					manrope.className,
+					"overflow-x-hidden flex flex-col h-full",
+				])}
+			>
 				<Navbar />
-				{children}
+				<div className="grow">{children}</div>
+				<Footer />
 			</body>
 		</html>
 	);

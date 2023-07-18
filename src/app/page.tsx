@@ -1,5 +1,5 @@
 import { CategoryCardList } from "@/Category/components";
-import { About, Container, Footer } from "@/components";
+import { About, Container } from "@/components";
 import { Hero } from "@/Home/components";
 import { FeaturedProducts } from "@/Home/components/FeaturedProducts";
 
@@ -12,7 +12,6 @@ export default function Home() {
 				<FeaturedProducts />
 				<About />
 			</Container>
-			<Footer />
 		</main>
 	);
 }
