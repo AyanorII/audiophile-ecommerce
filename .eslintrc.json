@@ -30,6 +30,7 @@
   },
   "plugins": ["react", "@typescript-eslint", "react-hooks", "import-helpers", "unused-imports"],
   "rules": {
+    "max-len": ["warn", { "code": 120 }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
