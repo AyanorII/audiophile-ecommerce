@@ -14,7 +14,7 @@ export const ProductImage = ({ product }: Props) => {
 
 	const windowWidth = window.innerWidth || 0;
 
-	const className = "h-full w-full object-contain";
+	const className = "h-full w-full object-cover";
 
 	if (windowWidth > 1024) {
 		return (

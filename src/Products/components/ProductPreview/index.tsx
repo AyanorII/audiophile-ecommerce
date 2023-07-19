@@ -17,7 +17,7 @@ export const ProductPreview = ({ product, index = 0 }: Props) => {
 	return (
 		<div
 			className={twMerge([
-				"flex flex-col gap-8 md:gap-14 xl:gap-32",
+				"flex flex-col gap-8 md:gap-14 lg:gap-16 2xl:gap-24",
 				index % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row",
 			])}
 		>
