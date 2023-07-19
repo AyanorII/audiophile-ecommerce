@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 import { ProductType } from "@/Products/types";
@@ -10,7 +12,7 @@ export const ProductImage = ({ product }: Props) => {
 	const { image, name } = product;
 	const { mobile, tablet, desktop } = image;
 
-	const windowWidth = window.innerWidth;
+	const windowWidth = window.innerWidth || 0;
 
 	const className = "h-full w-full object-contain";
 
