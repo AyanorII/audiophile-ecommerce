@@ -14,7 +14,7 @@ const CategoriesLayout = ({ children, params }: Props) => {
 			<div className="bg-zinc-900 pt-[100px]">
 				<CategoryHeader category={params.category} />
 			</div>
-			{children}
+			<div className="my-16 md:my-32 lg:my-40">{children}</div>
 		</div>
 	);
 };
