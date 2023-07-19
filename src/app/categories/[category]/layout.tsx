@@ -1,5 +1,6 @@
-import { CategoryHeader } from "@/Category/components";
+import { CategoryCardList, CategoryHeader } from "@/Category/components";
 import { CategoryType } from "@/Category/types";
+import { About, Container } from "@/components";
 
 type Props = {
 	params: {
@@ -14,7 +15,11 @@ const CategoriesLayout = ({ children, params }: Props) => {
 			<div className="bg-zinc-900 pt-[100px]">
 				<CategoryHeader category={params.category} />
 			</div>
-			<div className="my-16 md:my-32 lg:my-40">{children}</div>
+			<Container className="my-16 flex flex-col gap-32 md:my-32 lg:my-40 lg:gap-40">
+				{children}
+				<CategoryCardList className="mt-10" />
+				<About />
+			</Container>
 		</div>
 	);
 };
