@@ -1,4 +1,4 @@
-import { Product } from "@/Products/components";
+import { ProductPreview } from "@/Products/components";
 
 import { PRODUCTS } from "@/lib/constants";
 
@@ -22,7 +22,7 @@ const CategoryPage = ({ params }: Props) => {
 	return (
 		<>
 			{categoryProducts.map((product, index) => (
-				<Product key={product.id} product={product} index={index} />
+				<ProductPreview key={product.id} product={product} index={index} />
 			))}
 		</>
 	);

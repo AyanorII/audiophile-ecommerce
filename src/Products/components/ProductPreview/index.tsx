@@ -11,7 +11,7 @@ type Props = {
 	index?: number;
 };
 
-export const Product = ({ product, index = 0 }: Props) => {
+export const ProductPreview = ({ product, index = 0 }: Props) => {
 	const { new: isNewProduct, name, description, slug } = product;
 
 	return (
