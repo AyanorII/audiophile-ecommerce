@@ -10,8 +10,10 @@ type Props = {
 
 const CategoriesLayout = ({ children, params }: Props) => {
 	return (
-		<div className="bg-zinc-900 pt-[100px]">
-			<CategoryHeader category={params.category} />
+		<div>
+			<div className="bg-zinc-900 pt-[100px]">
+				<CategoryHeader category={params.category} />
+			</div>
 			{children}
 		</div>
 	);
