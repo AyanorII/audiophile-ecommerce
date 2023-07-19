@@ -1,5 +1,5 @@
 export const BASE_CLASS_NAME =
-	"py-4 px-8 uppercase font-bold tracking-widest text-sm transition-all";
+	"py-4 px-8 uppercase font-bold tracking-widest text-sm transition-all inline-block";
 
 export const CONTAINED_CLASS_NAME =
 	"bg-primary-main hover:bg-primary-light text-white";
