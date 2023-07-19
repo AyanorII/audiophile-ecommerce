@@ -4,16 +4,16 @@ export const CATEGORIES: Category[] = [
 	{
 		type: CategoryType.Headphones,
 		image: "/images/shared/desktop/image-category-thumbnail-headphones.png",
-		href: "/headphones",
+		href: "/categories/headphones",
 	},
 	{
 		type: CategoryType.Speakers,
 		image: "/images/shared/desktop/image-category-thumbnail-speakers.png",
-		href: "/speakers",
+		href: "/categories/speakers",
 	},
 	{
 		type: CategoryType.Earphones,
 		image: "/images/shared/desktop/image-category-thumbnail-earphones.png",
-		href: "/earphones",
+		href: "/categories/earphones",
 	},
 ];
