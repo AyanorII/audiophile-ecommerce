@@ -17,8 +17,7 @@ export const HeroContent = () => {
 					Experience natural, lifelike audio and exceptional build quality made
 					for the passionate music enthusiast.
 				</p>
-				{/* TODO: Set the correct href */}
-				<Button as="link" href="/TODO">
+				<Button as="link" href="/products/xx99-mark-two-headphones">
 					See product
 				</Button>
 			</div>

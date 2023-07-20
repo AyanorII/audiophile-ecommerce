@@ -13,7 +13,7 @@ export const FeaturedProductTertiary = () => {
 					<h3 className="mb-8 text-3xl font-bold uppercase tracking-widest">
 						YX1 Earphones
 					</h3>
-					<Button as="link" href="/TODO" variant="outlined">
+					<Button as="link" href="/products/yx1-earphones" variant="outlined">
 						See product
 					</Button>
 				</div>

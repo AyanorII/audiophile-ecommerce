@@ -9,8 +9,12 @@ export const FeaturedProductMainContent = () => {
 					Upgrade to premium speakers that are phenomenally built to deliver
 					truly remarkable sound.
 				</p>
-				{/* TODO: Set the correct href */}
-				<Button as="link" variant="dark" href="/TODO" className="inline-block">
+				<Button
+					as="link"
+					variant="dark"
+					href="/products/zx9-speaker"
+					className="inline-block"
+				>
 					See Product
 				</Button>
 			</div>
