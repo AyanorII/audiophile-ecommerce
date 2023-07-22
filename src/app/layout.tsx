@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { Footer } from "@/components";
 import { Navbar } from "@/components/UI/Navbar";
+import { Providers } from "@/lib/redux/providers";
 import { twMerge } from "tailwind-merge";
 
 const manrope = Manrope({ subsets: ["latin"] });
@@ -26,9 +27,11 @@ export default function RootLayout({
 					"overflow-x-hidden flex flex-col h-full",
 				])}
 			>
-				<Navbar />
-				<div className="grow">{children}</div>
-				<Footer />
+				<Providers>
+					<Navbar />
+					<div className="grow">{children}</div>
+					<Footer />
+				</Providers>
 			</body>
 		</html>
 	);
