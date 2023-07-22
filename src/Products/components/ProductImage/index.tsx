@@ -1,50 +1,53 @@
 "use client";
 
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
+import { useEffect, useState } from "react";
 
+import { useEventListener } from "@/lib/hooks";
 import { ProductType } from "@/Products/types";
+import { twMerge } from "tailwind-merge";
 
-type Props = {
+type GalleryIndex = "first" | "second" | "third";
+
+type CommonProps = {
 	product: ProductType;
+	className?: string;
 };
 
-export const ProductImage = ({ product }: Props) => {
-	const { image, name } = product;
-	const { mobile, tablet, desktop } = image;
+type Props = CommonProps & {
+	galleryIndex?: GalleryIndex;
+};
 
-	const windowWidth = window.innerWidth || 0;
+export const ProductImage = ({ product, galleryIndex, ...props }: Props) => {
+	const { image, name, gallery } = product;
 
-	const className = "h-full w-full object-cover";
+	const { mobile, tablet, desktop } = galleryIndex
+		? gallery[galleryIndex]
+		: image;
 
-	if (windowWidth > 1024) {
-		return (
-			<Image
-				src={desktop}
-				alt={name}
-				className={className}
-				width={220}
-				height={240}
-			/>
-		);
-	} else if (windowWidth > 768) {
-		return (
-			<Image
-				src={tablet}
-				alt={name}
-				className={className}
-				width={220}
-				height={240}
-			/>
-		);
-	}
+	const [windowWidth, setWindowWidth] = useState(0);
 
-	return (
-		<Image
-			src={mobile}
-			alt={name}
-			className={className}
-			width={220}
-			height={240}
-		/>
-	);
+	useEventListener("resize", () => {
+		setWindowWidth(window.innerWidth);
+	});
+
+	useEffect(() => {
+		setWindowWidth(window.innerWidth);
+	}, []);
+
+	const className = twMerge(["h-full w-full object-cover", props.className]);
+
+	const commonProps: Omit<ImageProps, "src"> = {
+		alt: name,
+		className,
+		unoptimized: true,
+		width: 220,
+		height: 240,
+	};
+
+	if (windowWidth > 1024) return <Image src={desktop} {...commonProps} />;
+
+	if (windowWidth > 768) return <Image src={tablet} {...commonProps} />;
+
+	return <Image src={mobile} {...commonProps} />;
 };

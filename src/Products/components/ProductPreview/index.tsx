@@ -21,10 +21,23 @@ export const ProductPreview = ({ product, index = 0 }: Props) => {
 				index % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row",
 			])}
 		>
-			<Card className="relative min-h-[240px] min-w-[230px] lg:w-full">
-				<ProductImage product={product} />
+			<Card
+				className={`
+          relative grid min-h-[240px] min-w-[230px] place-items-center
+          bg-[#F1F1F1] sm:h-[352px] md:h-[400px] lg:h-full lg:w-full`}
+			>
+				<ProductImage
+					product={product}
+					className={`
+            sm:w-1/2 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2
+            md:-translate-y-1/2 lg:static lg:w-full lg:translate-x-0 lg:translate-y-0`}
+				/>
 			</Card>
-			<div className="text-center md:mx-auto md:w-[85%] lg:flex lg:w-full lg:flex-col lg:items-start lg:justify-center lg:text-left">
+			<div
+				className={`
+        text-center md:mx-auto md:w-[85%] lg:flex lg:w-full
+        lg:flex-col lg:items-start lg:justify-center lg:text-left`}
+			>
 				{isNewProduct && (
 					<span className="mb-6 inline-block text-sm uppercase tracking-[10px] text-primary-light md:mb-4">
 						New product
