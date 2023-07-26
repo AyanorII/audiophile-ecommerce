@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 import { twMerge } from "tailwind-merge";
@@ -21,15 +23,27 @@ export const Button = ({
 	...props
 }: Props) => {
 	const variantClassName = getButtonClassName(variant);
+
 	const className = twMerge([
 		BASE_CLASS_NAME,
 		variantClassName,
 		props.className,
+		props.disabled && "bg-gray-300 cursor-not-allowed hover:bg-gray-300",
 	]);
+
+	const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+		if (props.disabled) {
+			e.preventDefault();
+		}
+	};
 
 	if (as === "link") {
 		return (
-			<Link {...(props as LinkSpecificProps)} className={className}>
+			<Link
+				{...(props as LinkSpecificProps)}
+				className={className}
+				onClick={handleLinkClick}
+			>
 				{children}
 			</Link>
 		);
