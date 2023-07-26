@@ -50,7 +50,7 @@ export const Navbar = () => {
 									<Logo />
 								</Link>
 							</div>
-							<CartButton className="order-2 p-2" />
+							<CartButton className="p-2" />
 							<LinkList
 								linkItemProps={{ className: "text-white" }}
 								className="hidden w-full items-center justify-between md:w-auto lg:flex xl:absolute xl:left-1/2 xl:-translate-x-1/2"
