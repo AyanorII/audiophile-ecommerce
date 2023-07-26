@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
+import { Slide, ToastContainer } from "react-toastify";
 import "./globals.css";
 
 import { Footer } from "@/components";
 import { Navbar } from "@/components/UI/Navbar";
 import { Providers } from "@/lib/redux/providers";
+import "react-toastify/dist/ReactToastify.css";
 import { twMerge } from "tailwind-merge";
 
 const manrope = Manrope({ subsets: ["latin"] });
@@ -31,6 +33,18 @@ export default function RootLayout({
 					<Navbar />
 					<div className="grow">{children}</div>
 					<Footer />
+					<ToastContainer
+						position="bottom-right"
+						autoClose={1500}
+						limit={2}
+						hideProgressBar={false}
+						newestOnTop
+						transition={Slide}
+						closeOnClick
+						rtl={false}
+						draggable
+						theme="colored"
+					/>
 				</Providers>
 			</body>
 		</html>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 import { Button, CounterControlButton } from "@/components";
 import { useAppDispatch } from "@/lib/redux/hooks";
@@ -19,12 +20,18 @@ export const AddToCart = ({ product }: Props) => {
 	const handleAddToCart = () => {
 		if (quantity === 0) return;
 
-		dispatch(
-			addItem({
-				product,
-				quantity,
-			})
-		);
+		try {
+			dispatch(
+				addItem({
+					product,
+					quantity,
+				})
+			);
+
+			toast.success(`${product.shortName} added to cart`);
+		} catch (error) {
+			toast.error("Something went wrong");
+		}
 	};
 
 	return (
