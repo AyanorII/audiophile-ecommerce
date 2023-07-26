@@ -1,6 +1,7 @@
-import { Button, Card, CounterControlButton, Price } from "@/components";
+import { Card, Price } from "@/components";
 import { ProductType } from "@/Products/types";
 
+import { AddToCart } from "../AddToCart";
 import { ProductImage } from "../ProductImage";
 
 type Props = {
@@ -28,10 +29,7 @@ export const Product = ({ product }: Props) => {
 					{description}
 				</p>
 				<Price price={price} className="lg:mb-4" />
-				<div className="flex gap-4">
-					<CounterControlButton />
-					<Button as="button">Add to cart</Button>
-				</div>
+				<AddToCart product={product} />
 			</div>
 		</div>
 	);

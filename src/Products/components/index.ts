@@ -1,3 +1,4 @@
+export * from "./AddToCart";
 export * from "./Product";
 export * from "./ProductGallery";
 export * from "./ProductImage";
