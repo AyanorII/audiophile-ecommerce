@@ -33,7 +33,7 @@ export const CounterControlButton = ({
 	]);
 	const BUTTON_CLASS_NAME = twMerge([
 		COMMON_CLASS_NAME,
-		"text-gray-500 hover:text-gray-700",
+		"text-gray-500 hover:text-primary-main",
 	]);
 
 	return (
