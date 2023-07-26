@@ -29,7 +29,14 @@ export const cartSlice = createSlice({
 	name: "cart",
 	initialState,
 	reducers: {
-		resetCart: () => initialState,
+		resetCart: (state) => {
+			state.items = [];
+			state.total = 0;
+
+			if (typeof window !== "undefined") {
+				window.localStorage.setItem("cart", JSON.stringify(state));
+			}
+		},
 
 		addItem: (state, { payload }: PayloadAction<CartItem>) => {
 			const product = state.items.find(
