@@ -1,31 +1,37 @@
+"use client";
+
 import { ProductType } from "@/Products/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-type CartItem = {
+export type CartItem = {
 	product: ProductType;
 	quantity: number;
-	subTotal: number;
 };
 
-type CartState = {
-	items: CartItem[];
+export type CartState = {
+	items: (CartItem & { subTotal: number })[];
 	total: number;
 };
 
-const initialState = {
-	items: [],
-	total: 0,
-} as CartState;
+const cart =
+	typeof window !== "undefined"
+		? window.localStorage.getItem("cart")
+		: undefined;
+
+const initialState = cart
+	? (JSON.parse(cart) as CartState)
+	: ({
+			items: [],
+			total: 0,
+	  } as CartState);
 
 export const cartSlice = createSlice({
 	name: "cart",
 	initialState,
 	reducers: {
-		reset: () => initialState,
-		addItem: (
-			state,
-			{ payload }: PayloadAction<Omit<CartItem, "subtotal">>
-		) => {
+		resetCart: () => initialState,
+
+		addItem: (state, { payload }: PayloadAction<CartItem>) => {
 			const product = state.items.find(
 				({ product: item }) => item.id === payload.product.id
 			);
@@ -40,12 +46,42 @@ export const cartSlice = createSlice({
 					subTotal: payload.product.price * payload.quantity,
 				});
 			}
+
+			state.total = state.items.reduce(
+				(acc, { subTotal }) => acc + subTotal,
+				0
+			);
+
+			if (typeof window !== "undefined") {
+				window.localStorage.setItem("cart", JSON.stringify(state));
+			}
 		},
+
 		removeItem: (state, { payload }: PayloadAction<ProductType>) => {
-			state.items.filter(({ product }) => product.id !== payload.id);
+			const product = state.items.find(
+				({ product: item }) => item.id === payload.id
+			);
+
+			if (product && product.quantity > 1) {
+				product.quantity -= 1;
+				product.subTotal = product.quantity * product.product.price;
+			} else {
+				state.items = state.items.filter(
+					({ product: item }) => item.id !== payload.id
+				);
+			}
+
+			state.total = state.items.reduce(
+				(acc, { subTotal }) => acc + subTotal,
+				0
+			);
+
+			if (typeof window !== "undefined") {
+				window.localStorage.setItem("cart", JSON.stringify(state));
+			}
 		},
 	},
 });
 
-export const { addItem, removeItem, reset } = cartSlice.actions;
+export const { addItem, removeItem, resetCart } = cartSlice.actions;
 export default cartSlice.reducer;
