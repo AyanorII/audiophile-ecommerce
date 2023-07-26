@@ -1,49 +1,39 @@
 "use client";
 
-import { useState } from "react";
-
 import { twMerge } from "tailwind-merge";
 
 type Props = {
-	initialValue?: number;
-	onIncrement?: (value: number) => void;
-	onDecrement?: (value: number) => void;
+	value: number;
+	onIncrement: (value: number) => void;
+	onDecrement: (value: number) => void;
 	className?: string;
 	buttonsClassName?: string;
 };
 
 export const CounterControlButton = ({
-	initialValue = 0,
+	value = 0,
 	onIncrement,
 	onDecrement,
 	className,
 	buttonsClassName,
 }: Props) => {
-	const [value, setValue] = useState(initialValue);
-
 	const handleIncrement = () => {
-		setValue((prev) => {
-			const newValue = prev + 1;
-			onIncrement?.(newValue);
-
-			return newValue;
-		});
+		const newValue = value + 1;
+		onIncrement(newValue);
 	};
 
 	const handleDecrement = () => {
-		setValue((prev) => {
-			const newValue = prev <= 0 ? 0 : prev - 1;
-			onDecrement?.(newValue);
-
-			return newValue;
-		});
+		const newValue = value <= 0 ? 0 : value - 1;
+		onDecrement(newValue);
 	};
 
-	const COMMON_CLASS_NAME = "p-4 lg:px-6 font-bold bg-gray-200";
+	const COMMON_CLASS_NAME = twMerge([
+		"p-4 lg:px-6 font-bold bg-gray-200",
+		buttonsClassName,
+	]);
 	const BUTTON_CLASS_NAME = twMerge([
 		COMMON_CLASS_NAME,
 		"text-gray-500 hover:text-gray-700",
-		buttonsClassName,
 	]);
 
 	return (
