@@ -50,7 +50,7 @@ export const CartButton = ({ className, cart, ...props }: Props) => {
 						height={20}
 					/>
 				</button>
-				<CartMenu cart={cart} isOpen={isOpen} />
+				<CartMenu cart={cart} isOpen={isOpen} onClose={handleClose} />
 			</div>
 		</>
 	);

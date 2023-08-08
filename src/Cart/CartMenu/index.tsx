@@ -11,9 +11,10 @@ import { CartItemsList } from "../CartItemsList";
 type Props = {
 	isOpen: boolean;
 	cart: RootState["cart"];
+	onClose: () => void;
 };
 
-export const CartMenu = ({ isOpen, cart }: Props) => {
+export const CartMenu = ({ isOpen, cart, onClose }: Props) => {
 	const { items, total } = cart;
 
 	return (
@@ -32,9 +33,20 @@ export const CartMenu = ({ isOpen, cart }: Props) => {
 				<span>TOTAL</span>
 				<span className="font-bold">{getFormattedPrice(total)}</span>
 			</div>
-			<Button as="link" href="/checkout" disabled={items.length === 0}>
-				Checkout
-			</Button>
+			<div
+				onClick={() => {
+					items.length > 0 && onClose();
+				}}
+			>
+				<Button
+					as="link"
+					href="/checkout"
+					disabled={items.length === 0}
+					className="w-full"
+				>
+					Checkout
+				</Button>
+			</div>
 		</Card>
 	);
 };
