@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { toast } from "react-toastify";
 
 import { Button, CounterControlButton } from "@/components";
-import { useAppDispatch } from "@/lib/redux/hooks";
-import { addItem } from "@/lib/redux/slices/cart";
 import { ProductType } from "@/Products/types";
+
+import { addItemToCart } from "../../../Cart/actions";
 
 type Props = {
 	product: ProductType;
@@ -14,20 +14,13 @@ type Props = {
 
 export const AddToCart = ({ product }: Props) => {
 	const [quantity, setQuantity] = useState(0);
+	const [, startTransition] = useTransition();
 
-	const dispatch = useAppDispatch();
-
-	const handleAddToCart = () => {
+	const handleAddToCart = async () => {
 		if (quantity === 0) return;
 
 		try {
-			dispatch(
-				addItem({
-					product,
-					quantity,
-				})
-			);
-
+			await addItemToCart(product, quantity);
 			toast.success(`${product.shortName} added to cart`);
 		} catch (error) {
 			toast.error("Something went wrong");
@@ -41,7 +34,10 @@ export const AddToCart = ({ product }: Props) => {
 				onIncrement={setQuantity}
 				onDecrement={setQuantity}
 			/>
-			<Button as="button" onClick={handleAddToCart}>
+			<Button
+				as="button"
+				onClick={() => startTransition(() => handleAddToCart())}
+			>
 				Add to cart
 			</Button>
 		</div>

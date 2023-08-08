@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { CartButton } from "@/Cart";
 import { CategoryCardList } from "@/Category/components";
 import { useEventListener, useOpenable, useScrollPosition } from "@/lib/hooks";
+import { RootState } from "@/lib/redux/store";
 import { twMerge } from "tailwind-merge";
 
 import { DESKTOP_BREAKPOINT, SCROLL_THRESHOLD } from "./constants";
@@ -16,7 +17,11 @@ import { Overlay } from "../Overlay";
 import { LinkList } from "./LinkList";
 import { NavMenuButton } from "./NavMenuButton";
 
-export const Navbar = () => {
+type Props = {
+	cart: RootState["cart"];
+};
+
+export const Navbar = ({ cart }: Props) => {
 	const { isOpen, handleClose, handleToggle } = useOpenable();
 	const { isScrollingDown } = useScrollPosition(SCROLL_THRESHOLD);
 
@@ -50,7 +55,7 @@ export const Navbar = () => {
 									<Logo />
 								</Link>
 							</div>
-							<CartButton className="p-2" />
+							<CartButton className="p-2" cart={cart} />
 							<LinkList
 								linkItemProps={{ className: "text-white" }}
 								className="hidden w-full items-center justify-between md:w-auto lg:flex xl:absolute xl:left-1/2 xl:-translate-x-1/2"

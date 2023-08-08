@@ -4,15 +4,12 @@ import {
 	ProductInfo,
 	ProductRecommendations,
 } from "@/Products/components";
+import { ProductType } from "@/Products/types";
 
 import { PRODUCTS } from "@/lib/constants";
 
-export const generateStaticParams = () => {
-	return PRODUCTS.map(({ slug }) => ({ slug }));
-};
-
 type Props = {
-	params: ReturnType<typeof generateStaticParams>[number];
+	params: { slug: ProductType["slug"] };
 };
 
 const ProductPage = ({ params }: Props) => {

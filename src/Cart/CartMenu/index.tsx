@@ -1,10 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import { Button, Card } from "@/components";
 import { getFormattedPrice } from "@/lib/helpers";
-import { useAppSelector } from "@/lib/redux/hooks";
+import { RootState } from "@/lib/redux/store";
 import { twMerge } from "tailwind-merge";
 
 import { CartHeader } from "../CartHeader";
@@ -12,18 +10,11 @@ import { CartItemsList } from "../CartItemsList";
 
 type Props = {
 	isOpen: boolean;
+	cart: RootState["cart"];
 };
 
-export const CartMenu = ({ isOpen }: Props) => {
-	const [hasMounted, setHasMounted] = useState(false);
-
-	const { items, total } = useAppSelector((state) => state.cart);
-
-	useEffect(() => {
-		setHasMounted(true);
-	}, []);
-
-	if (!hasMounted) return null;
+export const CartMenu = ({ isOpen, cart }: Props) => {
+	const { items, total } = cart;
 
 	return (
 		<Card

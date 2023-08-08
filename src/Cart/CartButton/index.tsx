@@ -1,33 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { Overlay } from "@/components";
 import { Badge } from "@/components/UI/Badge";
 import { useOpenable } from "@/lib/hooks";
-import { useAppSelector } from "@/lib/redux/hooks";
+import { RootState } from "@/lib/redux/store";
 import { twMerge } from "tailwind-merge";
 
 import { CartMenu } from "../CartMenu";
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement>;
+type Props = {
+	cart: RootState["cart"];
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const CartButton = ({ className, ...props }: Props) => {
-	const [itemsCount, setItemsCount] = useState(0);
-
+export const CartButton = ({ className, cart, ...props }: Props) => {
 	const { isOpen, handleOpen, handleClose } = useOpenable();
-
-	const { items } = useAppSelector((state) => state.cart);
 
 	useEffect(() => {
 		// Prevent scrolling when the menu is open.
 		document.body.style.overflow = isOpen ? "hidden" : "auto";
 	}, [isOpen]);
-
-	useEffect(() => {
-		setItemsCount(items.length);
-	}, [items, itemsCount]);
 
 	return (
 		<>
@@ -43,10 +37,10 @@ export const CartButton = ({ className, ...props }: Props) => {
 					{...props}
 				>
 					<Badge
-						count={itemsCount}
+						count={cart.items.length}
 						className={twMerge([
 							"absolute -right-1 -top-1 transition-all",
-							itemsCount > 0 ? "opacity-100" : "opacity-0",
+							cart.items.length > 0 ? "opacity-100" : "opacity-0",
 						])}
 					/>
 					<Image
@@ -56,7 +50,7 @@ export const CartButton = ({ className, ...props }: Props) => {
 						height={20}
 					/>
 				</button>
-				<CartMenu isOpen={isOpen} />
+				<CartMenu cart={cart} isOpen={isOpen} />
 			</div>
 		</>
 	);
