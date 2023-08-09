@@ -18,6 +18,8 @@ type Props<
 > = {
 	label?: string;
 	type?: "text" | "password" | "email" | "number";
+	containerClassName?: string;
+	required?: boolean;
 } & UseControllerProps<TFieldValues, TName> &
 	React.HTMLAttributes<HTMLInputElement>;
 
@@ -32,6 +34,8 @@ const TextField = <
 	type = "text",
 	rules,
 	id,
+	containerClassName,
+	required,
 	...props
 }: Props<TFieldValues, TName>) => {
 	const {
@@ -49,31 +53,35 @@ const TextField = <
 		setFocus(false);
 	};
 
-	const BASE_CLASS_NAME = "caret-primary-main outline-none";
+	const BASE_CLASS_NAME =
+		"caret-primary-main outline-none w-full placeholder-gray-300 placeholder:italic";
 
 	return (
-		<BaseInput
-			label={label}
-			error={Boolean(error)}
-			focused={isFocused}
-			errorMessage={error?.message}
-			htmlFor={id || name}
-		>
-			<input
-				type={type}
-				{...field}
-				{...props}
-				id={id || name}
-				onFocus={() => {
-					handleFocus();
-				}}
-				onBlur={() => {
-					handleBlur();
-					field.onBlur();
-				}}
-				className={twMerge([BASE_CLASS_NAME, className])}
-			/>
-		</BaseInput>
+		<div className={twMerge([containerClassName])}>
+			<BaseInput
+				label={label}
+				error={Boolean(error)}
+				focused={isFocused}
+				errorMessage={error?.message}
+				htmlFor={id || name}
+				required={required}
+			>
+				<input
+					type={type}
+					{...field}
+					{...props}
+					id={id || name}
+					onFocus={() => {
+						handleFocus();
+					}}
+					onBlur={() => {
+						handleBlur();
+						field.onBlur();
+					}}
+					className={twMerge([BASE_CLASS_NAME, className])}
+				/>
+			</BaseInput>
+		</div>
 	);
 };
 
