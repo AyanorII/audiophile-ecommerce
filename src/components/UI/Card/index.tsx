@@ -7,7 +7,7 @@ export const Card = ({ children, className, ...props }: Props) => {
 		<div
 			{...props}
 			className={twMerge([
-				"rounded-lg hover:shadow-md overflow-hidden transition-all duration-300",
+				"rounded-lg overflow-hidden transition-all duration-300",
 				className,
 			])}
 		>

@@ -6,10 +6,13 @@ type Props = {
 } & React.HTMLProps<HTMLLabelElement>;
 
 export const Label = ({ children, error, ...props }: Props) => {
-	const className = "font-bold text-sm text-black";
+	const className = "font-bold text-xs text-black";
 
 	return (
-		<label className={twMerge(className, error && "text-red-500")} {...props}>
+		<label
+			{...props}
+			className={twMerge(className, props.className, error && "text-red-500")}
+		>
 			{children}
 		</label>
 	);

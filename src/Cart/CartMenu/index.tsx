@@ -23,7 +23,7 @@ export const CartMenu = ({ isOpen, cart, onClose }: Props) => {
 				`absolute sm:right-3 left-1/2 -translate-x-1/2 -translate-y-1/2 top-[50vh]
          sm:translate-x-[unset] sm:translate-y-[unset] sm:left-[unset] sm:top-10 z-50
          bg-white transition-all duration-300 overflow-hidden w-[90vw]
-         sm:max-w-[377px] gap-10 flex flex-col sm:origin-top-right`,
+         sm:max-w-[377px] lg:max-w-[420px] gap-10 flex flex-col sm:origin-top-right`,
 				isOpen ? "max-h-screen py-8 px-7 sm:p-8 scale-1" : "max-h-0 scale-0",
 			])}
 		>

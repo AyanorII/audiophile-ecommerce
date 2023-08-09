@@ -18,10 +18,10 @@ export const RadioGroup = <
 	name,
 }: Props<TFieldValues, TName>) => {
 	return (
-		<div>
-			{options.map((option) => (
+		<div className="flex flex-col gap-4">
+			{options.map((option, index) => (
 				<RadioInput
-					key={option.value}
+					key={`${option.value}.${index}`}
 					id={option.value}
 					option={option}
 					name={name}

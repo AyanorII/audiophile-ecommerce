@@ -11,6 +11,8 @@ type Props = {
 	errorMessage?: string;
 	focused?: boolean;
 	className?: string;
+	checked?: boolean;
+	required?: boolean;
 };
 
 const BaseInput = ({
@@ -21,11 +23,14 @@ const BaseInput = ({
 	focused,
 	htmlFor,
 	className,
+	checked,
+	required,
 }: Props) => {
 	const BASE_CLASS_NAME =
 		"border-[1px] py-4 px-4 text-black text-sm font-bold rounded-lg transition-colors ease-in-out hover:border-primary-main";
 
 	const FOCUSED_CLASS_NAME = "border-primary-main";
+	const CHECKED_CLASS_NAME = "border-primary-main";
 
 	const ERROR_CLASS_NAME = "border-error border-2 px-[15px] py-[15px]";
 
@@ -33,13 +38,24 @@ const BaseInput = ({
 		BASE_CLASS_NAME,
 		focused && FOCUSED_CLASS_NAME,
 		error && ERROR_CLASS_NAME,
+		checked && CHECKED_CLASS_NAME,
 		className,
 	]);
 
 	return (
-		<div>
-			<div className="mb-2 flex justify-between">
-				{label && <Label htmlFor={htmlFor}>{label}</Label>}
+		<div className="flex flex-col gap-2">
+			<div
+				className={twMerge([
+					"mb-2 flex justify-between",
+					!error && !label && "hidden",
+				])}
+			>
+				{label && (
+					<Label htmlFor={htmlFor}>
+						{label}
+						{required && " *"}
+					</Label>
+				)}
 				{error && (
 					<ErrorMessage className="justify-self-end">
 						{errorMessage}
