@@ -60,7 +60,7 @@ export const CheckoutForm = () => {
 						label="ZIP Code"
 						required
 						placeholder="10001"
-						containerClassName="col-start-1 col-end-2 row-span-2"
+						containerClassName="col-span-1"
 					/>
 					<TextField
 						control={control}
@@ -68,7 +68,7 @@ export const CheckoutForm = () => {
 						label="City"
 						required
 						placeholder="New York"
-						containerClassName="col-start-2 col-end-3"
+						containerClassName="col-span-1"
 					/>
 					<TextField
 						control={control}
@@ -76,7 +76,7 @@ export const CheckoutForm = () => {
 						label="Country"
 						required
 						placeholder="United States"
-						containerClassName="col-start-1 col-end-2"
+						containerClassName="col-span-1"
 					/>
 				</div>
 			</div>

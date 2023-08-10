@@ -36,7 +36,8 @@ export const CheckoutCompleteModal = ({ isOpen, cart, onClose }: Props) => {
 	return (
 		<Card
 			className={twMerge([
-				"absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-8 md:p-12 z-50 bg-white",
+				`fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-8 md:p-12
+        z-50 bg-white min-w-[327px] md:min-w-[540px]`,
 				!isOpen && "hidden",
 			])}
 		>
@@ -50,11 +51,11 @@ export const CheckoutCompleteModal = ({ isOpen, cart, onClose }: Props) => {
 			<h2 className="mb-4 whitespace-pre-wrap text-2xl font-bold uppercase md:mb-6 md:text-3xl">
 				{`Thank you \nfor your order`}
 			</h2>
-			<p className="mb-4 text-gray-400 md:mb-8">
+			<p className="mb-6 text-gray-400 md:mb-8">
 				You will receive an email confirmation shortly.
 			</p>
-			<Card className="mb-6 flex flex-col md:mb-12 lg:flex-row">
-				<div className="bg-[#f0f0f0] p-6">
+			<Card className="mb-6 flex min-h-[140px] flex-col md:mb-12 lg:flex-row">
+				<div className="flex grow flex-col justify-center bg-[#f0f0f0] p-6 pl-2">
 					{items.length > 0 && <CartItem item={items[0]} showQuantity />}
 					{items.length > 1 && (
 						<>
@@ -65,7 +66,7 @@ export const CheckoutCompleteModal = ({ isOpen, cart, onClose }: Props) => {
 						</>
 					)}
 				</div>
-				<div className="flex flex-col justify-center bg-gray-900 px-6 py-5">
+				<div className="flex grow flex-col justify-center bg-gray-900 px-6 py-5">
 					<p className="mb-2 font-thin uppercase tracking-wider text-gray-400">
 						Grand Total
 					</p>
