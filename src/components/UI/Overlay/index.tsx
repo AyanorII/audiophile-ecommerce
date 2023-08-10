@@ -1,3 +1,6 @@
+"use client";
+import { useEffect } from "react";
+
 import { twMerge } from "tailwind-merge";
 
 type Props = {
@@ -11,6 +14,10 @@ export const Overlay = ({
 	onClickAway,
 	position = "absolute",
 }: Props) => {
+	useEffect(() => {
+		document.body.style.overflow = isOpen ? "hidden" : "auto";
+	}, [isOpen]);
+
 	return (
 		<div
 			onClick={onClickAway}

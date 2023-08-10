@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
 
 import { CartButton } from "@/Cart";
 import { CategoryCardList } from "@/Category/components";
@@ -28,11 +27,6 @@ export const Navbar = ({ cart }: Props) => {
 	useEventListener("resize", () => {
 		window.innerWidth > DESKTOP_BREAKPOINT && handleClose();
 	});
-
-	useEffect(() => {
-		// Prevent scrolling when the menu is open.
-		document.body.style.overflow = isOpen ? "hidden" : "auto";
-	}, [isOpen]);
 
 	const categoryCardListBaseClassName =
 		"absolute overflow-hidden w-full bg-white px-6 transition-all duration-500";

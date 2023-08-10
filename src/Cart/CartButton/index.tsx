@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
 
 import { Overlay } from "@/components";
 import { Badge } from "@/components/UI/Badge";
@@ -17,11 +16,6 @@ type Props = {
 
 export const CartButton = ({ className, cart, ...props }: Props) => {
 	const { isOpen, handleOpen, handleClose } = useOpenable();
-
-	useEffect(() => {
-		// Prevent scrolling when the menu is open.
-		document.body.style.overflow = isOpen ? "hidden" : "auto";
-	}, [isOpen]);
 
 	return (
 		<>
