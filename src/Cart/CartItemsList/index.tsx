@@ -1,9 +1,8 @@
-import { RootState } from "@/lib/redux/store";
-
 import { CartItem, CartItemProps } from "../CartItem";
+import { Cart } from "../interfaces";
 
 type Props = {
-	items: RootState["cart"]["items"];
+	items: Cart["items"];
 	CartItemProps?: Partial<CartItemProps>;
 };
 export const CartItemsList = ({ items, CartItemProps }: Props) => {

@@ -3,9 +3,9 @@
 import Link from "next/link";
 
 import { CartButton } from "@/Cart";
+import { Cart } from "@/Cart/interfaces";
 import { CategoryCardList } from "@/Category/components";
 import { useEventListener, useOpenable, useScrollPosition } from "@/lib/hooks";
-import { RootState } from "@/lib/redux/store";
 import { twMerge } from "tailwind-merge";
 
 import { DESKTOP_BREAKPOINT, SCROLL_THRESHOLD } from "./constants";
@@ -17,7 +17,7 @@ import { LinkList } from "./LinkList";
 import { NavMenuButton } from "./NavMenuButton";
 
 type Props = {
-	cart: RootState["cart"];
+	cart: Cart;
 };
 
 export const Navbar = ({ cart }: Props) => {

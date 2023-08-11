@@ -5,13 +5,13 @@ import Image from "next/image";
 import { Overlay } from "@/components";
 import { Badge } from "@/components/UI/Badge";
 import { useOpenable } from "@/lib/hooks";
-import { RootState } from "@/lib/redux/store";
 import { twMerge } from "tailwind-merge";
 
 import { CartMenu } from "../CartMenu";
+import { Cart } from "../interfaces";
 
 type Props = {
-	cart: RootState["cart"];
+	cart: Cart;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const CartButton = ({ className, cart, ...props }: Props) => {

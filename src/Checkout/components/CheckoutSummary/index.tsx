@@ -1,12 +1,12 @@
 import { CartItemsList } from "@/Cart";
+import { Cart } from "@/Cart/interfaces";
 import { calculateGrandTotal, calculateVAT } from "@/Checkout/helpers";
 import { Button, Card } from "@/components";
 import { getFormattedPrice } from "@/lib/helpers";
-import { RootState } from "@/lib/redux/store";
 
 import { SHIPPING_FEE } from "@/lib/constants";
 
-type Props = { cart: RootState["cart"] };
+type Props = { cart: Cart };
 
 export const CheckoutSummary = ({ cart }: Props) => {
 	const { items, total } = cart;

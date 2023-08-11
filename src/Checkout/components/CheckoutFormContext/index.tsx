@@ -2,18 +2,18 @@
 
 import { FormProvider, useForm } from "react-hook-form";
 
+import { Cart } from "@/Cart/interfaces";
 import { checkoutSchema } from "@/Checkout/schemas";
 import { PaymentMethod } from "@/Checkout/types";
 import { Overlay } from "@/components";
 import { useOpenable } from "@/lib/hooks";
-import { RootState } from "@/lib/redux/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { CheckoutCompleteModal } from "../CheckoutCompleteModal";
 
 type Props = {
 	children: React.ReactNode;
-	cart: RootState["cart"];
+	cart: Cart;
 };
 
 export const CheckoutFormContext = ({ children, cart }: Props) => {

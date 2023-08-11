@@ -4,12 +4,11 @@ import { revalidatePath } from "next/cache";
 import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { cookies } from "next/headers";
 
-import { RootState } from "@/lib/redux/store";
 import { ProductType } from "@/Products/types";
 
 import { PRODUCTS } from "@/lib/constants";
 
-import { MinifiedCart } from "../Products/components/AddToCart/types";
+import { Cart, MinifiedCart } from "./interfaces";
 
 const EMPTY_CART: MinifiedCart = {
 	items: [],
@@ -43,10 +42,10 @@ const saveCartToCookie = (cart: MinifiedCart) => {
 };
 
 // eslint-disable-next-line @typescript-eslint/require-await
-export const getCart = async (): Promise<RootState["cart"]> => {
+export const getCart = async (): Promise<Cart> => {
 	const cart = getCartFromCookie();
 
-	const items: RootState["cart"]["items"] = cart.items.map((item) => {
+	const items: Cart["items"] = cart.items.map((item) => {
 		const product = PRODUCTS.find((product) => product.id === item.product);
 		if (!product)
 			throw new Error(

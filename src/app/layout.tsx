@@ -6,7 +6,6 @@ import "./globals.css";
 import { getCart } from "@/Cart/actions";
 import { Footer } from "@/components";
 import { Navbar } from "@/components/UI/Navbar";
-import { Providers } from "@/lib/redux/providers";
 import "react-toastify/dist/ReactToastify.css";
 import { twMerge } from "tailwind-merge";
 
@@ -33,23 +32,21 @@ export default async function RootLayout({
 					"overflow-x-hidden flex flex-col h-full bg-[#fafafa]",
 				])}
 			>
-				<Providers>
-					<Navbar cart={cart} />
-					<div className="grow">{children}</div>
-					<Footer />
-					<ToastContainer
-						position="bottom-right"
-						autoClose={1500}
-						limit={2}
-						hideProgressBar={false}
-						newestOnTop
-						transition={Slide}
-						closeOnClick
-						rtl={false}
-						draggable
-						theme="colored"
-					/>
-				</Providers>
+				<Navbar cart={cart} />
+				<div className="grow">{children}</div>
+				<Footer />
+				<ToastContainer
+					position="bottom-right"
+					autoClose={1500}
+					limit={2}
+					hideProgressBar={false}
+					newestOnTop
+					transition={Slide}
+					closeOnClick
+					rtl={false}
+					draggable
+					theme="colored"
+				/>
 			</body>
 		</html>
 	);

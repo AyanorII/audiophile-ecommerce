@@ -6,10 +6,11 @@ import { useTransition } from "react";
 import { addItemToCart, removeItemFromCart } from "@/Cart/actions";
 import { Card, CounterControlButton } from "@/components";
 import { getFormattedPrice } from "@/lib/helpers";
-import { RootState } from "@/lib/redux/store";
+
+import { Cart } from "../interfaces";
 
 export type CartItemProps = {
-	item: RootState["cart"]["items"][number];
+	item: Cart["items"][number];
 	showQuantity?: boolean;
 };
 

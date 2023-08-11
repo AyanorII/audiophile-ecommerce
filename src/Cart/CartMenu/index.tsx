@@ -2,15 +2,15 @@
 
 import { Button, Card } from "@/components";
 import { getFormattedPrice } from "@/lib/helpers";
-import { RootState } from "@/lib/redux/store";
 import { twMerge } from "tailwind-merge";
 
 import { CartHeader } from "../CartHeader";
 import { CartItemsList } from "../CartItemsList";
+import { Cart } from "../interfaces";
 
 type Props = {
 	isOpen: boolean;
-	cart: RootState["cart"];
+	cart: Cart;
 	onClose: () => void;
 };
 

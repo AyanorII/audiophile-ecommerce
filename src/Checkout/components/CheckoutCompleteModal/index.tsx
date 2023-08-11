@@ -6,14 +6,14 @@ import { useTransition } from "react";
 
 import { CartItem } from "@/Cart";
 import { clearCart } from "@/Cart/actions";
+import { Cart } from "@/Cart/interfaces";
 import { Button, Card } from "@/components";
 import { getFormattedPrice } from "@/lib/helpers";
-import { RootState } from "@/lib/redux/store";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
 	isOpen: boolean;
-	cart: RootState["cart"];
+	cart: Cart;
 	onClose: () => void;
 };
 
