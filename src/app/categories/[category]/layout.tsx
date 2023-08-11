@@ -1,12 +1,22 @@
+import { Metadata } from "next";
+
 import { CategoryCardList, CategoryHeader } from "@/Category/components";
 import { CategoryType } from "@/Category/types";
 import { About, Container } from "@/components";
+
+import { CATEGORIES_METADATA } from "@/Category/constants";
 
 type Props = {
 	params: {
 		category: CategoryType;
 	};
 	children: React.ReactNode;
+};
+
+export const generateMetadata = async ({
+	params: { category }, // eslint-disable-next-line @typescript-eslint/require-await
+}: Props): Promise<Metadata> => {
+	return CATEGORIES_METADATA[category];
 };
 
 const CategoriesLayout = ({ children, params }: Props) => {

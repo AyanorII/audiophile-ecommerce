@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import { CategoryCardList } from "@/Category/components";
 import { About, Container, GoBack } from "@/components";
 
@@ -7,6 +9,19 @@ type Props = {
 	children: React.ReactNode;
 	params: {
 		slug: string;
+	};
+};
+
+export const generateMetadata = async ({
+	params: { slug }, // eslint-disable-next-line @typescript-eslint/require-await
+}: Props): Promise<Metadata> => {
+	const product = PRODUCTS.find(
+		({ slug: productSlug }) => productSlug === slug
+	);
+
+	return {
+		title: `${product?.name} | Audiophile`,
+		description: product?.description,
 	};
 };
 

@@ -1,7 +1,15 @@
+import { Metadata } from "next";
+
 import { Container, GoBack } from "@/components";
 
 type Props = {
 	children: React.ReactNode;
+};
+
+export const metadata: Metadata = {
+	title: "Checkout | Audiophile",
+	description:
+		"Finalize your purchase of top-tier audio equipment at Audiophile NYC. Easy, secure, and swift checkout process. Step closer to elevating your sound experience today!",
 };
 
 const CheckoutLayout = ({ children }: Props) => {
