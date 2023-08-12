@@ -22,6 +22,9 @@ export const generateMetadata = async ({
 	return {
 		title: `${product?.name} | Audiophile`,
 		description: product?.description,
+		openGraph: {
+			images: product?.image.desktop,
+		},
 	};
 };
 
