@@ -1,6 +1,7 @@
 export const dynamic =
-	process.env.NODE_ENV === "production" ? "force-static" : "force-dynamic";
-export const dynamicParams = false;
+	process.env.NODE_ENV === "production" ? "auto" : "force-dynamic";
+
+import { notFound } from "next/navigation";
 
 import {
 	Product,
@@ -24,7 +25,11 @@ type Props = {
 };
 
 const ProductPage = ({ params }: Props) => {
-	const product = PRODUCTS.find(({ slug }) => slug === params.slug)!;
+	const product = PRODUCTS.find(({ slug }) => slug === params.slug);
+
+	if (!product) {
+		notFound();
+	}
 
 	return (
 		<div className="flex flex-col gap-20 md:gap-32 lg:gap-40">

@@ -1,6 +1,7 @@
-export const dynamicParams = false;
 export const dynamic =
-	process.env.NODE_ENV === "production" ? "force-static" : "force-dynamic";
+	process.env.NODE_ENV === "production" ? "auto" : "force-dynamic";
+
+import { notFound } from "next/navigation";
 
 import { ProductPreview } from "@/Products/components";
 
@@ -23,6 +24,15 @@ type Props = {
 };
 
 const CategoryPage = ({ params }: Props) => {
+	const uniqueCategories = staticParams();
+	const foundCategory = uniqueCategories.find(
+		({ category }) => category === params.category
+	);
+
+	if (!foundCategory) {
+		notFound();
+	}
+
 	const categoryProducts = PRODUCTS.filter(
 		(product) => product.category === params.category
 	).sort((a) => (a.new ? -1 : 1));
