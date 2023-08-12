@@ -1,9 +1,17 @@
+"use client";
+
 import { Button, Container } from "@/components";
+import { motion } from "framer-motion";
 
 export const HeroContent = () => {
 	return (
 		<Container>
-			<div className="relative mx-auto max-w-[40ch] text-center text-white lg:mx-0 lg:items-start lg:text-left">
+			<motion.div
+				className="relative mx-auto max-w-[40ch] text-center text-white lg:mx-0 lg:items-start lg:text-left"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 1.75, ease: "easeInOut" }}
+			>
 				<div className="mb-6 uppercase">
 					<span className="mb-4 block text-sm font-thin tracking-[10px] opacity-40">
 						NEW PRODUCT
@@ -20,7 +28,7 @@ export const HeroContent = () => {
 				<Button as="link" href="/products/xx99-mark-two-headphones">
 					See product
 				</Button>
-			</div>
+			</motion.div>
 		</Container>
 	);
 };
