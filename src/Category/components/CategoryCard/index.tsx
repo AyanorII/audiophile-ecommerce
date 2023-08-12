@@ -13,7 +13,7 @@ export const CategoryCard = ({ type, image, href }: Props) => {
 			<Card
 				className={twJoin([
 					"relative flex cursor-pointer flex-col items-center gap-3",
-					"bg-gray-100 px-6 pt-20 md:pt-28 overflow-visible",
+					"bg-[#e7e7e7] px-6 pt-20 md:pt-28 overflow-visible",
 				])}
 			>
 				<Image
@@ -24,15 +24,15 @@ export const CategoryCard = ({ type, image, href }: Props) => {
 					className="absolute -top-12 h-full max-w-[150px] object-contain md:-top-16 md:max-w-[200px]"
 				/>
 				<div className="relative">
-					<h3 className="text-center font-bold uppercase tracking-widest">
+					<span className="block text-center font-bold uppercase tracking-widest">
 						{type}
-					</h3>
+					</span>
 					<Button
 						as="button"
 						variant="text"
 						className="flex items-center gap-3"
 					>
-						<span>SHOP</span>
+						<span className="font-semibold text-[#636364]">SHOP</span>
 						<Image
 							src="/images/shared/desktop/icon-arrow-right.svg"
 							alt="arrow icon"

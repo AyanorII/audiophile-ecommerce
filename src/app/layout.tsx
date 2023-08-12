@@ -29,7 +29,7 @@ export default async function RootLayout({
 			<body
 				className={twMerge([
 					manrope.className,
-					"overflow-x-hidden flex flex-col h-full bg-[#fafafa]",
+					"overflow-x-hidden flex flex-col h-full bg-white",
 				])}
 			>
 				<Navbar cart={cart} />
