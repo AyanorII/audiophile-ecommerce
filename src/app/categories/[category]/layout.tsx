@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
-import { CategoryCardList, CategoryHeader } from "@/Category/components";
+import { CategoryCardList } from "@/Category/components";
 import { CategoryType } from "@/Category/types";
-import { About, Container } from "@/components";
+import { About, PageContainer } from "@/components";
 
 import { CATEGORIES_METADATA } from "@/Category/constants";
 
@@ -19,17 +19,14 @@ export const generateMetadata = async ({
 	return CATEGORIES_METADATA[category];
 };
 
-const CategoriesLayout = ({ children, params }: Props) => {
+const CategoriesLayout = ({ children }: Props) => {
 	return (
 		<div>
-			<div className="bg-zinc-900 pt-[100px]">
-				<CategoryHeader category={params.category} />
-			</div>
-			<Container className="my-16 flex flex-col gap-32 md:my-32 lg:my-40 lg:gap-40">
-				{children}
+			{children}
+			<PageContainer>
 				<CategoryCardList className="mt-10" />
 				<About />
-			</Container>
+			</PageContainer>
 		</div>
 	);
 };

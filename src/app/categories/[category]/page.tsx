@@ -3,6 +3,9 @@ export const dynamic =
 
 import { notFound } from "next/navigation";
 
+import { CategoryHeader } from "@/Category/components";
+import { CategoryType } from "@/Category/types";
+import { PageContainer } from "@/components";
 import { ProductPreview } from "@/Products/components";
 
 import { PRODUCTS } from "@/lib/constants";
@@ -39,9 +42,14 @@ const CategoryPage = ({ params }: Props) => {
 
 	return (
 		<>
-			{categoryProducts.map((product, index) => (
-				<ProductPreview key={product.id} product={product} index={index} />
-			))}
+			<div className="bg-zinc-900 pt-[100px]">
+				<CategoryHeader category={params.category as CategoryType} />
+			</div>
+			<PageContainer>
+				{categoryProducts.map((product, index) => (
+					<ProductPreview key={product.id} product={product} index={index} />
+				))}
+			</PageContainer>
 		</>
 	);
 };
